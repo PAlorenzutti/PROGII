@@ -1,39 +1,39 @@
 #include <stdio.h>
+
 #define MAX_LIN 1000
 #define MAX_COL 1000
 
-typedef struct{
-    int lin, col;
-}tipoPosicao;
+typedef struct {
+    int linha, coluna;
+} tipoPosicao;
 
-//verificar tipo de posição, se a porção da string for igual a B, abaixar e retornar a posição
-
-int main(){
-    int linhas, colunas;
+int main() {
+    int numeroLinhas, numeroColunas;
     int i, j;
-    tipoPosicao inicial, final, atual;
+    tipoPosicao inicial, final, atual, proximo;
 
-    scanf("%d %d", &linhas, &colunas);
+    scanf("%d %d", &numeroLinhas, &numeroColunas);
 
-    int matriz[linhas][colunas];
+    int matriz[MAX_LIN][MAX_COL];
 
-    //pegando a matriz
-    for(i = 0; i < linhas; i++){
-        for(j = 0; j < linhas; j++){
+    // Pegando a matriz
+    for (i = 0; i < numeroLinhas; i++) {
+        for (j = 0; j < numeroColunas; j++) {
             scanf("%d", &matriz[i][j]);
         }
     }
 
-    //pegando a posição inicial e final
-    scanf("%d %d", &inicial.lin, &inicial.col);
-    scanf("%d %d", &final.lin, &final.col);
+    // Pegando a posição inicial e final
+    scanf("%d %d", &inicial.linha, &inicial.coluna);
+    scanf("%d %d", &final.linha, &final.coluna);
 
-    //pegando a direção
-    char direcao[4];
-    scanf("%s", direcao);
+    // Atualizando posição inicial
+    atual.linha = inicial.linha;
+    atual.coluna = inicial.coluna;
 
-    //enquanto a posição final não bater o número de linhas ou colunas
-    
+    // Pegando a direção
+    char caracteres[4];
+    scanf("%s", caracteres);
 
     return 0;
 }

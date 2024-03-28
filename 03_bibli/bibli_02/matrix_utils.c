@@ -1,18 +1,23 @@
 #include "matrix_utils.h"
+#include <stdio.h>
 
 void matrix_read(int rows, int cols, int matrix[rows][cols]){
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-            scanf("%d ", matrix[i][j]);
+            scanf("%d", &matrix[i][j]);
         }
     }
 }
 
 void matrix_print(int rows, int cols, int matrix[rows][cols]){
     for(int i = 0; i < rows; i++){
+        printf("|");
+
         for(int j = 0; j < cols; j++){
             printf("%d ", matrix[i][j]);
         }
+
+        printf("\b|\n");
     }
 }
 
@@ -52,6 +57,18 @@ void matrix_sub(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, int 
     for(int i = 0; i < rows1; i++){
         for(int j = 0; j < cols1; j++){
             result[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+}
+
+void matrix_multiply(int rows1, int cols1, int matrix1[rows1][cols1], int rows2, int cols2, int matrix2[rows2][cols2], int result[rows1][cols2]){
+    for(int i = 0; i < rows1; i++){
+        for(int j = 0; j < cols2; j++){
+            result[i][j] = 0;
+
+            for(int k = 0; k < cols1; k++){
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
         }
     }
 }

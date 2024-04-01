@@ -65,8 +65,6 @@ tAgencia cadastrarNovoCliente(tAgencia agencia){
     return agencia;
 }
 
-
-
 tAgencia removerCliente(tAgencia agencia, char cpfExclude[MAX_CHAR]){
     tAgencia temp;
     temp.index = 0;
@@ -79,6 +77,28 @@ tAgencia removerCliente(tAgencia agencia, char cpfExclude[MAX_CHAR]){
     }
 
     return temp;
+}
+
+tAgencia inserirDinheiro(tAgencia agencia, char cpf[MAX_CHAR], float quantia){
+    for(int i = 0; i < agencia.index; i++){
+        if(strcmp(agencia.correntista[i].cpf, cpf) == 0){
+            agencia.correntista[i].saldo += quantia;
+            break;
+        }
+    }
+
+    return agencia;
+}
+
+tAgencia removerDinheiro(tAgencia agencia, char cpf[MAX_CHAR], float quantia){
+    for(int i = 0; i < agencia.index; i++){
+        if(strcmp(agencia.correntista[i].cpf, cpf) == 0){
+            agencia.correntista[i].saldo -= quantia;
+            break;
+        }
+    }
+
+    return agencia;
 }
 
 void printarAgencia(tAgencia agencia){
@@ -106,6 +126,32 @@ int main(){
 
         if(option == 1){
             agencia = cadastrarNovoCliente(agencia);
+            printarAgencia(agencia);
+        }
+
+        if(option == 2){
+            char cpf[MAX_CHAR];
+            printf("Digite o CPF do cliente que deseja inserir dinheiro: ");
+            scanf("%s", cpf);
+
+            float quantia;
+            printf("Digite a quantia: ");
+            scanf("%f", &quantia);
+
+            agencia = inserirDinheiro(agencia, cpf, quantia);
+            printarAgencia(agencia);
+        }
+
+        if(option == 3){
+            char cpf[MAX_CHAR];
+            printf("Digite o CPF do cliente que deseja remover dinheiro: ");
+            scanf("%s", cpf);
+
+            float quantia;
+            printf("Digite a quantia: ");
+            scanf("%f", &quantia);
+
+            agencia = removerDinheiro(agencia, cpf, quantia);
             printarAgencia(agencia);
         }
 

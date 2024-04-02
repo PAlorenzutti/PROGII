@@ -15,7 +15,7 @@ typedef struct{
 typedef struct{
     float base;
     float altura;
-}
+}tTriangulo;
 
 float multaCircular(tCirculo c);
 float multaRetangular(tRetangulo r);

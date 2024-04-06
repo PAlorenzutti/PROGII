@@ -10,5 +10,6 @@ typedef struct {
 
 Data lerData(); //já foi
 void printData(Data d);
+//Dúvida se pode implementar mais uma função pra calculdar idade e média de idade.
 
 #endif

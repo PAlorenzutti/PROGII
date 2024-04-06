@@ -14,9 +14,9 @@ typedef struct {
 } Lesao;
 
 Lesao lerLesao(); //já foi
-void printLesao(Lesao les);
+void printLesao(Lesao les); //já foi
 int consultaLesao(Lesao lesao[], int qtdLesoes, Lesao les); //já foi
 void obtemCartaoSusLesao(Lesao les, char cartaoSus[]); //já foi
-int chanceCirurgia(Lesao les[], int qtdLes);
+int chanceCirurgia(Lesao les[], int qtdLes); //já foi
 
 #endif

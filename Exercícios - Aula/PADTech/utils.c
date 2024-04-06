@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <stdio.h>
 #include <string.h>
 
 void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les)
@@ -10,7 +11,7 @@ void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les)
     
     for (int i=0; i<tamPacs; i++)
     {   
-        obtemCartaoSusPaciente(pacs[i], obtemCartaoSusPaciente);
+        obtemCartaoSusPaciente(pacs[i], cSusPaciente);
         if (strcmp(cSusLesao, cSusPaciente) == 0)
         {
             //implementar a partir do insereLesaoPaciente

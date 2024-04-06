@@ -29,3 +29,19 @@ int consultaLesao(Lesao lesao[], int qtdLesoes, Lesao les){
 
     return 1;
 }
+
+int chanceCirurgia(Lesao les[], int qtdLes){
+    int numeroCirurgias = 0;
+
+    for(int i = 0; i < qtdLes; i++){
+        if(les[i].chanceMalig > 50){
+            numeroCirurgias++;
+        }
+    }
+
+    return numeroCirurgias;
+}
+
+void printLesao(Lesao les){
+    printf("%s ", les.id);
+}

@@ -20,7 +20,7 @@ int main(){
             p = lerPaciente();
 
             //Se a quantidade de pacs tiver excedido o máximo, para o programa
-            if(tamPacs >= MAX_TAM_PACIENTES){
+            if(tamPacs > MAX_TAM_PACIENTES){
                 printf("Numero maximo de pacientes permitidos");
                 break;
             }else{
@@ -37,6 +37,13 @@ int main(){
             Lesao les;
             les = lerLesao();
             associaLesaoPaciente(pacs, tamPacs, les);
+        }else if(option == 'F'){
+            //Se a opção for F, ele sai do loop e, caso tenha cadastrado pacientes e/ou lesões, será printado tais informações.
+            break;
+        }else{
+            printf("Opcao invalida. Tente novamente.");
         }
     }
+
+    printDescricao(pacs, tamPacs);
 }

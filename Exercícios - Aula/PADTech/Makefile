@@ -11,3 +11,6 @@ main:
 
 clean:
 	rm -rf *.o
+
+cleanAll:
+	rm -rf *.a main

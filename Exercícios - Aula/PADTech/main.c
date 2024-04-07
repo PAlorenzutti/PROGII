@@ -13,7 +13,7 @@ int main(){
     while(1){
         char option;
         scanf("%c\n", &option);
-
+    
         if(option == 'P'){
             //Cadastro de paciente
             Paciente p;
@@ -21,15 +21,12 @@ int main(){
 
             //Se a quantidade de pacs tiver excedido o máximo, para o programa
             if(tamPacs > MAX_TAM_PACIENTES){
-                printf("Numero maximo de pacientes permitidos");
                 break;
             }else{
                 //Consulta se o paciente já está na lista
                 if(consultaPaciente(pacs, tamPacs, p)){
                     pacs[tamPacs] = p;
                     tamPacs++;
-                }else{
-                    printf("Paciente ja cadastrado");
                 }
             }
         }else if(option == 'L'){
@@ -40,10 +37,9 @@ int main(){
         }else if(option == 'F'){
             //Se a opção for F, ele sai do loop e, caso tenha cadastrado pacientes e/ou lesões, será printado tais informações.
             break;
-        }else{
-            printf("Opcao invalida. Tente novamente.");
         }
     }
 
+    
     printDescricao(pacs, tamPacs);
 }

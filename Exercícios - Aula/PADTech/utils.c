@@ -18,6 +18,30 @@ void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les)
             pacs[i] = insereLesaoPaciente(pacs[i], les);
         }
     }
+}
 
-    printf("Paciente não encontrado para cadastrar lesao.");
+int calcularIdadePaciente(Data d){
+    int idade;
+
+    idade = ANO - d.ano;
+
+    if(d.mes > MES || (d.mes == MES && d.dia > DIA)){
+        idade--;
+    }
+
+    return idade;
+}
+
+int calcularMediaIdade(Paciente pacs[], int tamPacs){
+    int mediaIdade = 0;
+    
+    for(int i = 0; i < tamPacs; i++){
+        mediaIdade += calcularIdadePaciente(pacs[i].dataNasc);
+    }
+
+    if(tamPacs > 0){
+        return mediaIdade / tamPacs;
+    }else{
+        return 0;
+    }
 }

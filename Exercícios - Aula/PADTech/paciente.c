@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "paciente.h"
+#include "utils.h"
 
 Paciente lerPaciente()
 {
@@ -33,14 +34,13 @@ void obtemCartaoSusPaciente(Paciente p, char cartaoSus[])
 }
 
 Paciente insereLesaoPaciente(Paciente p, Lesao les){
-    //Caso não exista lesão igual, inserir lesão.
-    if(p.qntLesao >= 10){
-        printf("Numero de lesoes excedido pelo paciente.");
-    }else if(consultaLesao(p.lesoes, p.qntLesao, les)){
-        p.lesoes[p.qntLesao] = les;
-        p.qntLesao++;
-    }else{
-        printf("A lesao ja foi cadastrada no paciente.");
+    //Se o número de lesões for inferior a 10, pode cadastrar
+    if(p.qntLesao < 10){
+        //Se não tiver nenhuma lesão igual, pode cadastrar
+        if(consultaLesao(p.lesoes, p.qntLesao, les)){
+            p.lesoes[p.qntLesao] = les;
+            p.qntLesao++;
+        }
     }
 
     return p;
@@ -60,7 +60,11 @@ void printPaciente(Paciente p){
 
 void printDescricao(Paciente pacs[], int tamPacs){
     //Printar total de pacientes
-    printf("\nTOTAL PACIENTES: %d", tamPacs);
+    printf("TOTAL PACIENTES: %d", tamPacs);
+
+    //Printar média de idade
+    int mediaIdade = calcularMediaIdade(pacs, tamPacs);
+    printf("\nMEDIA IDADE (ANOS): %d", mediaIdade);
 
     //Calcular o número total de lesões e printar total de lesões
     int totalLesoes = 0;

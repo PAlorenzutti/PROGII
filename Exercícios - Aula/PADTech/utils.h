@@ -4,6 +4,8 @@
 
 #include "paciente.h"
 #include "lesao.h"
+#include "data.h"
+
 
 void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les); //já foi
 

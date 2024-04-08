@@ -54,7 +54,7 @@ void printPacienteResumido(Paciente p){
 }
 
 void printPaciente(Paciente p){
-    printf(" - %s - ", p.nome);
+    printf("- %s - ", p.nome);
     printPacienteResumido(p);
 }
 

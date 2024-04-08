@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <stdio.h>
 #include <string.h>
+#include "data.h"
 
 void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les)
 {

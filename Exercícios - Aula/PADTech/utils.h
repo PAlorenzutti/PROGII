@@ -8,5 +8,6 @@
 
 
 void associaLesaoPaciente(Paciente pacs[], int tamPacs, Lesao les); //já foi
-
+int calcularIdadePaciente(Data d);
+int calcularMediaIdade(Paciente pacs[], int tamPacs);
 #endif

@@ -29,7 +29,14 @@ int main(){
                 printf("Excedido numero maximo de partidas permitidas");
                 break;
             }else{
+                //criando espelhos para acessar dados da tPartida dentro de franquia.
+                char franquiaVisitante[MAX_FRANQUIA_NOME];
+                int pontosVisitante;
+                char franquiaCasa[MAX_FRANQUIA_NOME];
+                int pontosCasa;
+
                 partidas[qtdPartidas] = lerPartida();
+                obtemDadosPartida(partidas[qtdPartidas], &franquiaVisitante, &pontosVisitante, &franquiaCasa, &pontosCasa);
                 qtdPartidas++;
             }
         }

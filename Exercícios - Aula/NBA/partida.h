@@ -3,6 +3,7 @@
 
 #include "constantes.h"
 
+//TAD
 typedef struct{
     char franquiaVisitante[MAX_FRANQUIA_NOME];
     int pontosVisitante;
@@ -10,6 +11,9 @@ typedef struct{
     int pontosCasa;
 }tPartida;
 
+//Funções
 tPartida lerPartida();
+
+void obtemDadosPartida(tPartida partida, char *franquiaVisitante, int *pontosVisitante, char *franquiaCasa, int *pontosCasa);
 
 #endif

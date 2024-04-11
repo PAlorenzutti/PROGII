@@ -13,4 +13,10 @@ tFranquia lerFranquia(){
     return franquia;
 }
 
-tFranquia associarPontosFranquia()
+
+
+tFranquia associarPontosFranquias(tFranquia franquias[], int qtdFranquias, char franquiaVisitante[], char franquiaCasa[], int pontosVisitante, int pontosCasa){
+    int indexCasa;
+    int indexVisitante;
+}
+

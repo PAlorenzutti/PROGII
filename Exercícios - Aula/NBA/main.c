@@ -36,13 +36,25 @@ int main(){
                 int pontosCasa;
 
                 partidas[qtdPartidas] = lerPartida();
+
                 obtemDadosPartida(partidas[qtdPartidas], &franquiaVisitante, &pontosVisitante, &franquiaCasa, &pontosCasa);
+
+                associarPontosFranquias(&franquias, qtdFranquias, franquiaVisitante, pontosVisitante, franquiaCasa, pontosCasa);
+
                 qtdPartidas++;
             }
         }
 
         if(opcao == 'E'){
+            if(qtdPartidas > 0){
+                somaVitorias(&franquias, qtdFranquias);
+                calculaAproveitamento(&franquias, qtdFranquias);
+            }   
+            
             break;
         }
     }
+
+    float aproveitamentoLeste = calculaAproveitamentoConferencia(&franquias, qtdFranquias, "LESTE");
+    float aproveitamentoOeste = calculaAproveitamentoConferencia(&franquias, qtdFranquias, "OESTE");
 }

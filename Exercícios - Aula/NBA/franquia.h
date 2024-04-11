@@ -14,11 +14,18 @@ typedef struct{
     float aproveitamento;
 }tFranquia;
 
-//Funções
+//FunÃ§Ãµes
 tFranquia lerFranquia();
 
-int pesquisarFranquia(tFranquia franquia, int qtdFranquias, char nomeFranquia[]);
+void somaVitorias(tFranquia *franquias[], int qtdFranquias);
 
-tFranquia associarPontosFranquias(tFranquia franquias[], int qtdFranquias, char franquiaVisitante[], char franquiaCasa[], int pontosVisitante, int pontosCasa);
+void calculaAproveitamentoFranquia(tFranquia *franquias[], int qtdFranquias);
+
+//Implementar aproveitamento conferencia
+void printAproveitamentoConferencia(tFranquia *franquias[], int qtdFranquias, char conferencia[]);
+
+int pesquisarFranquia(tFranquia franquias[], int qtdFranquias, char nomeFranquia[]);
+
+void associarPontosFranquias(tFranquia *franquias[], int qtdFranquias, char franquiaVisitante[], int pontosVisitante, char franquiaCasa[], int pontosCasa);
 
 #endif

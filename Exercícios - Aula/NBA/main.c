@@ -21,7 +21,6 @@ int main(){
             }else{
                 franquias[qtdFranquias] = lerFranquia();
                 qtdFranquias++;
-                printf("Lido franquia numero %d", qtdFranquias);
             }
         }
 
@@ -43,7 +42,6 @@ int main(){
                 associarPontosFranquias(franquias, qtdFranquias, franquiaVisitante, pontosVisitante, franquiaCasa, pontosCasa);
 
                 qtdPartidas++;
-                printf("Lido partida numero %d", qtdPartidas);
             }
         }
 
@@ -57,53 +55,13 @@ int main(){
             
             break;
         }
-
-        printf("\n");
     }
-
-    printf("\n");
-
-    for(int i = 0; i < qtdFranquias; i++){
-        printf("%s %s %d %d %.2f %d %d\n", franquias[i].nome, franquias[i].sigla, 
-        franquias[i].vitorias, franquias[i].derrotas, franquias[i].aproveitamento,
-        franquias[i].vitoriasCasa, franquias[i].vitoriasFora);
-    }
-
-    int vitoriasLeste = somaVitoriasConferencia(franquias, qtdFranquias, "LESTE[CL]");
-    int vitoriasOeste = somaVitoriasConferencia(franquias, qtdFranquias, "OESTE[CO]");
-
-    int derrotasLeste = somaDerrotasConferencia(franquias, qtdFranquias, "LESTE[CL]");
-    int derrotasOeste = somaDerrotasConferencia(franquias, qtdFranquias, "OESTE[CO]");
-
-    int partidasLeste = vitoriasLeste + derrotasLeste;
-    int partidasOeste = vitoriasOeste + derrotasOeste;
-
-    float aproveitamentoLeste;
-    float aproveitamentoOeste;
-    
-    if(!partidasLeste){
-        aproveitamentoLeste = 0;
-    }else{
-        aproveitamentoLeste = (float) vitoriasLeste / (float) (partidasLeste);
-    }
-
-    if(!partidasOeste){
-        aproveitamentoOeste = 0;
-    }else{
-        aproveitamentoOeste = (float) vitoriasOeste / (float) (partidasOeste);
-    }
-
-
-    printf("\nLESTE: %d %d %.2f\n", vitoriasLeste, derrotasLeste, aproveitamentoLeste);
-    printf("OESTE: %d %d %.2f\n", vitoriasOeste, derrotasOeste, aproveitamentoOeste);
-
-    /*
-    printAproveitamentoConferencias(franquias, qtdFranquias);
 
     if(qtdFranquias > 0){
         printFranquias(franquias, qtdFranquias);
     }
-    */
+
+    printAproveitamentoConferencias(franquias, qtdFranquias);
 
     return 0;
 }

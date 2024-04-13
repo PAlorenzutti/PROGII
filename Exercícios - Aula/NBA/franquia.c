@@ -6,16 +6,15 @@ tFranquia lerFranquia(){
     tFranquia franquia;
 
     scanf("%s %s\n", franquia.nome, franquia.conferencia);
-    printf("\n%s", franquia.conferencia);
 
     if(!strcmp(franquia.conferencia, "OESTE")){
         strcpy(franquia.sigla, "[CO]");
-        printf("\n%s", franquia.conferencia);
+        //Para corrigir bug de concatenação pós strcmp;
     }
 
     if(!strcmp(franquia.conferencia, "LESTE")){
         strcpy(franquia.sigla, "[CL]");
-        printf("\n%s", franquia.conferencia);
+        //Para corrigir bug de concatenação pós strcmp;
     }
 
     franquia.partidas = 0;
@@ -37,12 +36,12 @@ void somaVitoriasFranquias(tFranquia franquias[], int qtdFranquias){
 //Calcula aproveitamento de cada franquia
 void calculaAproveitamentoFranquias(tFranquia franquias[], int qtdFranquias){
     for(int i = 0; i < qtdFranquias; i++){
-        printf("\nCalculando aproveitamento de %s", franquias[i].nome);
-        franquias[i].aproveitamento = ((float) franquias[i].vitorias / (float) franquias[i].partidas) * 100;
-        printf("\nvitorias (%d) / partidas (%d) = %.2f", franquias[i].vitorias, franquias[i].partidas, franquias[i].aproveitamento);
+        if(franquias[i].partidas){
+            franquias[i].aproveitamento = ((float) franquias[i].vitorias / (float) franquias[i].partidas) * 100;
+        }else{
+            franquias[i].aproveitamento = 0;
+        }
     }
-
-    printf("\n");
 }
 
 int pesquisarFranquia(tFranquia franquias[], int qtdFranquias, char nomeFranquia[]){
@@ -58,9 +57,7 @@ int somaVitoriasConferencia(tFranquia franquias[], int qtdFranquias, char confer
     int vitorias = 0;
     
     for(int i = 0; i < qtdFranquias; i++){
-        printf("\n%s", franquias[i].conferencia);
         if(!strcmp(franquias[i].conferencia, conferencia)){
-            printf("\nIgual");
             vitorias += franquias[i].vitorias;
         }
     }
@@ -90,17 +87,34 @@ void printFranquias(tFranquia franquias[], int qtdFranquias){
 
 void printAproveitamentoConferencias(tFranquia franquias[], int qtdFranquias){
 
+    //CL e CO adicionados a string para corrigir bug de concatenação
     int vitoriasLeste = somaVitoriasConferencia(franquias, qtdFranquias, "LESTE[CL]");
     int vitoriasOeste = somaVitoriasConferencia(franquias, qtdFranquias, "OESTE[CO]");
 
     int derrotasLeste = somaDerrotasConferencia(franquias, qtdFranquias, "LESTE[CL]");
     int derrotasOeste = somaDerrotasConferencia(franquias, qtdFranquias, "OESTE[CO]");
-    
-    float aproveitamentoLeste = vitoriasLeste / (vitoriasLeste + derrotasLeste);
-    float aproveitamentoOeste = vitoriasOeste / (vitoriasOeste + derrotasOeste);
 
-    printf("LESTE: %d %d %.2f\n", vitoriasLeste, derrotasLeste, aproveitamentoLeste);
-    printf("OESTE: %d %d %.2f\n", vitoriasOeste, derrotasOeste, aproveitamentoOeste);
+    int partidasLeste = vitoriasLeste + derrotasLeste;
+    int partidasOeste = vitoriasOeste + derrotasOeste;
+
+    float aproveitamentoLeste;
+    float aproveitamentoOeste;
+    
+    if(!partidasLeste){
+        aproveitamentoLeste = 0;
+    }else{
+        aproveitamentoLeste = ((float) vitoriasLeste / (float) (partidasLeste)) * 100;
+    }
+
+    if(!partidasOeste){
+        aproveitamentoOeste = 0;
+    }else{
+        aproveitamentoOeste = ((float) vitoriasOeste / (float) (partidasOeste)) * 100;
+    }
+
+
+    printf("LESTE %d %d %.2f\n", vitoriasLeste, derrotasLeste, aproveitamentoLeste);
+    printf("OESTE %d %d %.2f\n", vitoriasOeste, derrotasOeste, aproveitamentoOeste);
 }
 
 void associarPontosFranquias(tFranquia franquias[], int qtdFranquias, char franquiaVisitante[], int pontosVisitante, char franquiaCasa[], int pontosCasa){

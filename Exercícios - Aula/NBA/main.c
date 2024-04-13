@@ -12,7 +12,7 @@ int main(){
 
     while(1){
         char opcao;
-        scanf("%d\n", &opcao);
+        scanf("%c", &opcao);
 
         if(opcao == 'F'){
             if(qtdFranquias >= MAX_FRANQUIAS){
@@ -37,24 +37,31 @@ int main(){
 
                 partidas[qtdPartidas] = lerPartida();
 
-                obtemDadosPartida(partidas[qtdPartidas], &franquiaVisitante, &pontosVisitante, &franquiaCasa, &pontosCasa);
+                obtemDadosPartida(partidas[qtdPartidas], franquiaVisitante, &pontosVisitante, franquiaCasa, &pontosCasa);
 
-                associarPontosFranquias(&franquias, qtdFranquias, franquiaVisitante, pontosVisitante, franquiaCasa, pontosCasa);
+                associarPontosFranquias(franquias, qtdFranquias, franquiaVisitante, pontosVisitante, franquiaCasa, pontosCasa);
 
                 qtdPartidas++;
             }
         }
 
         if(opcao == 'E'){
+    
             if(qtdPartidas > 0){
-                somaVitorias(&franquias, qtdFranquias);
-                calculaAproveitamento(&franquias, qtdFranquias);
-            }   
+                somaVitoriasFranquias(franquias, qtdFranquias);
+            
+                calculaAproveitamentoFranquias(franquias, qtdFranquias);
+            }
             
             break;
         }
     }
 
-    float aproveitamentoLeste = calculaAproveitamentoConferencia(&franquias, qtdFranquias, "LESTE");
-    float aproveitamentoOeste = calculaAproveitamentoConferencia(&franquias, qtdFranquias, "OESTE");
+    printAproveitamentoConferencias(franquias, qtdFranquias);
+
+    if(qtdFranquias > 0){
+        printFranquias(franquias, qtdFranquias);
+    }
+
+    return 0;
 }

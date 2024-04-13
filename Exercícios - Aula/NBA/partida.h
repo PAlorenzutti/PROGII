@@ -14,6 +14,6 @@ typedef struct{
 //Funções
 tPartida lerPartida();
 
-void obtemDadosPartida(tPartida partida, char *franquiaVisitante, int *pontosVisitante, char *franquiaCasa, int *pontosCasa);
+void obtemDadosPartida(tPartida partida, char franquiaVisitante[], int *pontosVisitante, char franquiaCasa[], int *pontosCasa);
 
 #endif

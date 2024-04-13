@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "partida.h": "c"
+        "partida.h": "c",
+        "franquia.h": "c"
     }
 }

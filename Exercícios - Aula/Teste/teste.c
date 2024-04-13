@@ -1,6 +1,29 @@
-#include "franquia.h"
 #include <stdio.h>
 #include <string.h>
+
+#define MAX_FRANQUIAS 100
+#define MAX_PARTIDAS 100
+#define MAX_CONF_NOME 5
+#define MAX_FRANQUIA_NOME 32
+
+typedef struct{
+    char nome[MAX_FRANQUIA_NOME];
+    char conferencia[MAX_CONF_NOME];
+    char sigla[4];
+    int partidas;
+    int vitorias;
+    int vitoriasCasa;
+    int vitoriasFora;
+    int derrotas;
+    float aproveitamento;
+}tFranquia;
+
+typedef struct{
+    char franquiaVisitante[MAX_FRANQUIA_NOME];
+    int pontosVisitante;
+    char franquiaCasa[MAX_FRANQUIA_NOME];
+    int pontosCasa;
+}tPartida;
 
 tFranquia lerFranquia(){
     tFranquia franquia;
@@ -31,10 +54,14 @@ void somaVitoriasFranquias(tFranquia franquias[], int qtdFranquias){
     }
 }
 
-//Calcula aproveitamento de cada franquia
+//Calcula aproveitamento de cada franquia   
 void calculaAproveitamentoFranquias(tFranquia franquias[], int qtdFranquias){
     for(int i = 0; i < qtdFranquias; i++){
-        franquias[i].aproveitamento = franquias[i].vitorias / franquias[i].partidas;
+        if(franquias[i].partidas > 0){
+            franquias[i].aproveitamento = franquias[i].vitorias / franquias[i].partidas;
+        }else{
+            franquias[i].aproveitamento = 0;
+        }
     }
 }
 
@@ -80,7 +107,6 @@ void printFranquias(tFranquia franquias[], int qtdFranquias){
 }
 
 void printAproveitamentoConferencias(tFranquia franquias[], int qtdFranquias){
-
     int vitoriasLeste = somaVitoriasConferencia(franquias, qtdFranquias, "LESTE");
     int vitoriasOeste = somaVitoriasConferencia(franquias, qtdFranquias, "OESTE");
 
@@ -93,6 +119,7 @@ void printAproveitamentoConferencias(tFranquia franquias[], int qtdFranquias){
     printf("LESTE: %d %d %.2f\n", vitoriasLeste, derrotasLeste, aproveitamentoLeste);
     printf("OESTE: %d %d %.2f\n", vitoriasOeste, derrotasOeste, aproveitamentoOeste);
 }
+
 
 void associarPontosFranquias(tFranquia franquias[], int qtdFranquias, char franquiaVisitante[], int pontosVisitante, char franquiaCasa[], int pontosCasa){
     //Pegando o index de cada time;
@@ -115,4 +142,81 @@ void associarPontosFranquias(tFranquia franquias[], int qtdFranquias, char franq
         franquias[indexVisitante].partidas++;
         franquias[indexVisitante].derrotas++;
     }
+}
+
+tPartida lerPartida(){
+    tPartida p;
+
+    scanf("%s @ %s %d %d\n", p.franquiaVisitante, p.franquiaCasa, &p.pontosVisitante, &p.pontosCasa);
+
+    return p;
+}
+
+void obtemDadosPartida(tPartida partida, char franquiaVisitante[], int *pontosVisitante, char franquiaCasa[], int *pontosCasa){
+    *pontosVisitante = partida.pontosVisitante;
+    *pontosCasa = partida.pontosCasa;
+    strcpy(franquiaVisitante, partida.franquiaVisitante);
+    strcpy(franquiaCasa, partida.franquiaCasa);
+}
+
+int main(){
+    tFranquia franquias[MAX_FRANQUIAS];
+    int qtdFranquias = 0;
+
+    tPartida partidas[MAX_PARTIDAS];
+    int qtdPartidas = 0;
+
+    while(1){
+        char opcao;
+        scanf("%c\n", &opcao);
+
+        if(opcao == 'F'){
+            if(qtdFranquias >= MAX_FRANQUIAS){
+                printf("Excedido numero maximo de franquias permitidas.");
+                break;
+            }else{
+                franquias[qtdFranquias] = lerFranquia();
+                qtdFranquias++;
+            }
+        }
+
+        if(opcao == 'P'){
+            if(qtdPartidas >= MAX_PARTIDAS){
+                printf("Excedido numero maximo de partidas permitidas");
+                break;
+            }else{
+                //criando espelhos para acessar dados da tPartida dentro de franquia.
+                char franquiaVisitante[MAX_FRANQUIA_NOME];
+                int pontosVisitante;
+                char franquiaCasa[MAX_FRANQUIA_NOME];
+                int pontosCasa;
+
+                partidas[qtdPartidas] = lerPartida();
+
+                obtemDadosPartida(partidas[qtdPartidas], franquiaVisitante, &pontosVisitante, franquiaCasa, &pontosCasa);
+
+                associarPontosFranquias(franquias, qtdFranquias, franquiaVisitante, pontosVisitante, franquiaCasa, pontosCasa);
+
+                qtdPartidas++;
+            }
+        }
+
+        if(opcao == 'E'){
+            if(qtdPartidas > 0){
+                somaVitoriasFranquias(franquias, qtdFranquias);
+            
+                calculaAproveitamentoFranquias(franquias, qtdFranquias);
+            }   
+            
+            break;
+        }
+    }
+
+    printAproveitamentoConferencias(franquias, qtdFranquias);
+
+    if(qtdFranquias > 0){
+        printFranquias(franquias, qtdFranquias);
+    }
+
+    return 0;
 }

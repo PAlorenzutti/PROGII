@@ -25,7 +25,6 @@ void calculaAproveitamentoFranquias(tFranquia franquias[], int qtdFranquias);
 
 int pesquisarFranquia(tFranquia franquias[], int qtdFranquias, char nomeFranquia[]);
 
-//Implementar aproveitamento conferencia
 int somaVitoriasConferencia(tFranquia franquias[], int qtdFranquias, char conferencia[]);
 
 int somaDerrotasConferencia(tFranquia franquias[], int qtdFranquias, char conferencia[]);

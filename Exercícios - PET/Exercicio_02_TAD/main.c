@@ -14,15 +14,15 @@ char menu(){
     printf(" I - Imprimir Produtos\n");
     printf(" F - Finalizar Programa\n");
 
-    scanf("%c", &option);
+    scanf("%c\n", &option);
 
     return option;
 }
 
 int main(){
-    tStore store;
+    tStore loja;
 
-    store = abreLoja();
+    loja = abreLoja();
 
     while(true){
         char option = menu();
@@ -32,11 +32,19 @@ int main(){
 
             produto = leProduto();
 
-            store = adicionaProduto(store, produto);
+            loja = adicionaProduto(loja, produto);
         }
 
         if(option == 'E'){
+            int id, qtd;
+            
+            printf("Digite o id do produto: ");
+            scanf("%d\n", &id);
 
+            printf("Digite o numero de unidades: ");
+            scanf("%d\n", &qtd);
+
+            loja = aumentaEstoqueLoja(loja, id, qtd);
         }
 
         if(option == 'V'){
@@ -55,4 +63,8 @@ int main(){
             break;
         }
     }
+
+    imprimeProdutosLoja(loja);
+
+    return 0;
 }

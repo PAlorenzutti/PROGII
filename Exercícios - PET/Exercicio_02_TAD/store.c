@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "store.h"
 
 tStore abreLoja(){
@@ -13,4 +14,32 @@ tStore adicionaProduto(tStore loja, tProduct produto){
     loja.nmProdutos++;
 
     return loja;
+}
+
+int buscaProduto(tStore loja, int id){
+    for(int i = 0; i < loja.nmProdutos; i++){
+        if(ehMesmoId(loja.produtos[i], id)){
+            return i;
+        }
+    }
+
+    return 0;
+}
+
+tStore aumentaEstoqueLoja(tStore loja, int id, int qtd){
+    int index = buscaProduto(loja, id);
+    
+    if(index){
+        loja.produtos[index] = aumentaEstoqueProduto(loja.produtos[index], qtd);
+    }else{
+        printf("Id invalido\n");
+    }
+
+    return loja;
+}
+
+void imprimeProdutosLoja(tStore loja){
+    for(int i = 0; i < loja.nmProdutos; i++){
+        imprimeProduto(loja.produtos[i]);
+    }
 }

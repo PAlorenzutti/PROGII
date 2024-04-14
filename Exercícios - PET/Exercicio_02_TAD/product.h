@@ -20,7 +20,7 @@ typedef struct Product{
  * @param id Identificador de cada produto.
  * @return Produto criado.
  */
-tProduct leProduto();
+tProduct leProduto(); //já foi
 
 /**
  * @brief Cria um novo produto.
@@ -31,7 +31,7 @@ tProduct leProduto();
  * @param id Identificador de cada produto.
  * @return Produto criado.
  */
-tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int id);
+tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int id); //Descobrir para que serve
 
 /**
  * @brief Retorna o desconto atual de um produto
@@ -59,7 +59,7 @@ float obtemPrecoComDesconto(tProduct produto);
  * @param produto O produto.
  * @return O estoque.
 */
-int obtemEstoque(tProduct produto);
+int obtemEstoque(tProduct produto); //Descobrir para que serve
 
 /**
  * @brief Retorna as vendas atual de um produto
@@ -81,7 +81,7 @@ int obtemId(tProduct produto);
  * @param qtd A quantidade a ser adicionada ao estoque do produto.
  * @return Produto com o estoque atualizado.
 */
-tProduct aumentaEstoqueProduto(tProduct produto, int qtd);
+tProduct aumentaEstoqueProduto(tProduct produto, int qtd); //já foi
 
 /**
  * @brief Realiza a venda de um produto, caso o estoque seja válido (>0) (>=qtd).
@@ -105,7 +105,7 @@ tProduct atualizaDesconto(tProduct produto, float desconto);
  * @param id O id.
  * @return retorna true se o id for o mesmo do produto
 */
-bool ehMesmoId(tProduct produto, int id);
+bool ehMesmoId(tProduct produto, int id); //já foi
 
 /**
  * @brief Imprime as informações do produto na forma:
@@ -113,6 +113,6 @@ bool ehMesmoId(tProduct produto, int id);
  * @brief Deve possuir quebra de linha ao final
  * @param produto O produto a ser impresso.
 */
-void imprimeProduto(tProduct produto);
+void imprimeProduto(tProduct produto); //já foi
 
 #endif

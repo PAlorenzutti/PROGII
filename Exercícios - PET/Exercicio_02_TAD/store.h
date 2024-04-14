@@ -14,7 +14,7 @@ typedef struct store{
  * @brief Inicia uma struct do tipo tLoja, inicializando seus parâmetros.
  * @return loja inicializada
 */
-tStore abreLoja();
+tStore abreLoja(); //já foi
 
 /**
  * @brief Adiciona um novo produto à loja.
@@ -22,7 +22,7 @@ tStore abreLoja();
  * @param produto O produto.
  * @return A loja atualizada.
 */
-tStore adicionaProduto(tStore loja, tProduct produto);
+tStore adicionaProduto(tStore loja, tProduct produto); //já foi
 
 /**
  * @brief Varre a loja em busca do produto com o id desejado.
@@ -31,7 +31,7 @@ tStore adicionaProduto(tStore loja, tProduct produto);
  * @param id O id do produto procurado.
  * @return O produto.
 */
-int buscaProduto(tStore loja, int id);
+int buscaProduto(tStore loja, int id); //já foi
 
 /**
  * @brief Aumenta o estoque de um produto da loja.
@@ -40,7 +40,7 @@ int buscaProduto(tStore loja, int id);
  * @param qtd A quantidade a ser adicionada ao estoque do produto.
  * @return A loja com o produto com o estoque atualizado.
 */
-tStore aumentaEstoqueLoja(tStore loja, int id, int qtd);
+tStore aumentaEstoqueLoja(tStore loja, int id, int qtd); //já foi
 
 /**
  * @brief Realiza a venda de um produto de uma loja.
@@ -65,6 +65,6 @@ tStore atualizaDescontoLoja(tStore loja, int id, float desconto);
  * @brief Deve possuir quebra de linha ao final
  * @param loja A loja.
 */
-void imprimeProdutosLoja(tStore loja);
+void imprimeProdutosLoja(tStore loja); //já foi
 
 #endif

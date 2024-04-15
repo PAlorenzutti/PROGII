@@ -52,7 +52,7 @@ float obtempreco(tProduct produto);
  * @param produto O produto.
  * @return O preço com desconto.
 */
-float obtemPrecoComDesconto(tProduct produto);
+float obtemPrecoComDesconto(tProduct produto); //já foi
 
 /**
  * @brief Retorna o estoque atual de um produto

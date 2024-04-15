@@ -42,6 +42,14 @@ tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int i
     return produto;
 }
 
+float obtemPrecoComDesconto(tProduct produto){
+    float precoComDesconto;
+
+    precoComDesconto = produto.preco * (1 - produto.desconto);
+
+    return precoComDesconto;
+}
+
 int obtemId(tProduct produto){
     return produto.id;
 }
@@ -67,6 +75,16 @@ tProduct vendeProduto(tProduct produto, int qtd){
     return produto;
 }
 
+tProduct atualizaDesconto(tProduct produto, float desconto){
+    if(desconto >= 0 && desconto <= 1){
+        produto.desconto = desconto;
+    }else{
+        printf("Quantidade inválida.\n");
+    }
+
+    return produto;
+}
+
 bool ehMesmoId(tProduct produto, int id){
     int idProduto = obtemId(produto);
     
@@ -78,5 +96,7 @@ bool ehMesmoId(tProduct produto, int id){
 }
 
 void imprimeProduto(tProduct produto){
-    printf("Produto: %s, Preco atual: %.2f, Qtd no estoque: %d, Qtd vendida: %d\n", produto.nome, produto.preco, produto.estoque, produto.vendas);          
+    float precoAtual = obtemPrecoComDesconto(produto);
+
+    printf("Produto: %s, Preco atual: %.2f, Qtd no estoque: %d, Qtd vendida: %d\n", produto.nome, precoAtual, produto.estoque, produto.vendas);          
 }

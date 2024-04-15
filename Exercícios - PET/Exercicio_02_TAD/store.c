@@ -50,6 +50,19 @@ tStore vendeProdutoLoja(tStore loja, int id, int qtd){
     return loja;
 }
 
+tStore atualizaDescontoLoja(tStore loja, int id, float desconto){
+    int indexProduto = buscaProduto(loja, id);
+
+    if(indexProduto != -1){
+        loja.produtos[indexProduto] = atualizaDesconto(loja.produtos[indexProduto], desconto);
+    }else{
+        printf("Id invalido\n");
+    }
+
+    return loja;
+}
+
+
 void imprimeProdutosLoja(tStore loja){
     for(int i = 0; i < loja.nmProdutos; i++){
         imprimeProduto(loja.produtos[i]);

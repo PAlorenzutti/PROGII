@@ -38,7 +38,7 @@ int main(){
         if(option == 'E'){
             int id, qtd;
             
-            printf("Digite o id do produto: ");
+            printf("Digite o id do Produto: ");
             scanf("%d\n", &id);
 
             printf("Digite o numero de unidades: ");
@@ -50,7 +50,7 @@ int main(){
         if(option == 'V'){
             int id, qtd;
             
-            printf("Digite o id do produto: ");
+            printf("Digite o id do Produto: ");
             scanf("%d\n", &id);
 
             printf("Digite o numero de unidades: ");
@@ -60,7 +60,16 @@ int main(){
         }
 
         if(option == 'D'){
+            int id;
+            float desconto;
+            
+            printf("Digite o id do Produto: ");
+            scanf("%d\n", &id);
 
+            printf("Digite o novo desconto: ");
+            scanf("%f\n", &desconto);
+
+            loja = atualizaDescontoLoja(loja, id, desconto);
         }
 
         if(option == 'I'){

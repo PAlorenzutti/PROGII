@@ -49,7 +49,7 @@ tStore aumentaEstoqueLoja(tStore loja, int id, int qtd); //já foi
  * @param qtd A quantidade a ser retirada do estoque.
  * @return A loja com o produto com o estoque atualizado.
 */
-tStore vendeProdutoLoja(tStore loja, int id, int qtd);
+tStore vendeProdutoLoja(tStore loja, int id, int qtd); //já foi
 
 /**
  * @brief Atualiza o desconto de um produto de uma loja.
@@ -58,7 +58,7 @@ tStore vendeProdutoLoja(tStore loja, int id, int qtd);
  * @param desconto O novo desconto.
  * @return A loja com o produto com o desconto atualizado.
 */
-tStore atualizaDescontoLoja(tStore loja, int id, float desconto);
+tStore atualizaDescontoLoja(tStore loja, int id, float desconto); //já foi
 
 /**
  * @brief Imprime todos os produtos atuais de uma loja

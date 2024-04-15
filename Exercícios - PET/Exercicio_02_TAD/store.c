@@ -27,10 +27,10 @@ int buscaProduto(tStore loja, int id){
 }
 
 tStore aumentaEstoqueLoja(tStore loja, int id, int qtd){
-    int index = buscaProduto(loja, id);
+    int indexProduto = buscaProduto(loja, id);
     
-    if(index != -1){
-        loja.produtos[index] = aumentaEstoqueProduto(loja.produtos[index], qtd);
+    if(indexProduto != -1){
+        loja.produtos[indexProduto] = aumentaEstoqueProduto(loja.produtos[indexProduto], qtd);
     }else{
         printf("Id invalido\n");
     }
@@ -38,7 +38,17 @@ tStore aumentaEstoqueLoja(tStore loja, int id, int qtd){
     return loja;
 }
 
+tStore vendeProdutoLoja(tStore loja, int id, int qtd){
+    int indexProduto = buscaProduto(loja, id);
 
+    if(indexProduto != -1){
+        loja.produtos[indexProduto] = vendeProduto(loja.produtos[indexProduto], qtd);
+    }else{
+        printf("Id invalido\n");
+    }
+
+    return loja;
+}
 
 void imprimeProdutosLoja(tStore loja){
     for(int i = 0; i < loja.nmProdutos; i++){

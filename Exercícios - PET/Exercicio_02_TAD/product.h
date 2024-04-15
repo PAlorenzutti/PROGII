@@ -89,7 +89,7 @@ tProduct aumentaEstoqueProduto(tProduct produto, int qtd); //já foi
  * @param qtd A quantidade a ser retirada do estoque.
  * @return Produto com o estoque atualizado.
 */
-tProduct vendeProduto(tProduct produto, int qtd);
+tProduct vendeProduto(tProduct produto, int qtd); //já foi
 
 /**
  * @brief Atualiza o desconto de um produto, caso válido (>=0 && <=1).

@@ -56,6 +56,17 @@ tProduct aumentaEstoqueProduto(tProduct produto, int qtd){
     return produto;
 }
 
+tProduct vendeProduto(tProduct produto, int qtd){
+    if(produto.estoque - qtd >= 0){
+        produto.estoque -= qtd;
+        produto.vendas += qtd;
+    }else{
+        printf("Quantidade inválida.\n");
+    }
+
+    return produto;
+}
+
 bool ehMesmoId(tProduct produto, int id){
     int idProduto = obtemId(produto);
     

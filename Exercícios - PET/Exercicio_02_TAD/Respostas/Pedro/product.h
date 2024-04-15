@@ -38,14 +38,14 @@ tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int i
  * @param produto O produto.
  * @return O desconto.
 */
-float obtemDesconto(tProduct produto);
+float obtemDesconto(tProduct produto); //já foi
 
 /**
  * @brief Retorna o preço de um produto
  * @param produto O produto.
  * @return O preço.
 */
-float obtempreco(tProduct produto);
+float obtempreco(tProduct produto); //já foi
 
 /**
  * @brief Retorna o preço de um produto com o desconto aplicado.
@@ -59,14 +59,14 @@ float obtemPrecoComDesconto(tProduct produto); //já foi
  * @param produto O produto.
  * @return O estoque.
 */
-int obtemEstoque(tProduct produto); 
+int obtemEstoque(tProduct produto); //já foi
 
 /**
  * @brief Retorna as vendas atual de um produto
  * @param produto O produto.
  * @return As vendas.
 */
-int obtemVendas(tProduct produto);
+int obtemVendas(tProduct produto); //já foi
 
 /**
  * @brief Retorna o id de um produto
@@ -97,7 +97,7 @@ tProduct vendeProduto(tProduct produto, int qtd); //já foi
  * @param desconto O novo desconto.
  * @return Produto com o desconto atualizado.
 */
-tProduct atualizaDesconto(tProduct produto, float desconto);
+tProduct atualizaDesconto(tProduct produto, float desconto); //já foi
 
 /**
  * @brief Checa se um id dado é o igual ao id de um produto

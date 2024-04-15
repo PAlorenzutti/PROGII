@@ -12,5 +12,5 @@ main:
 clean:
 	rm -rf *.o
 
-cleanAll:
-	rm -rf *.o *.a main
+remove:
+	rm -rf *.o *.a *.txt main

@@ -48,7 +48,15 @@ int main(){
         }
 
         if(option == 'V'){
+            int id, qtd;
+            
+            printf("Digite o id do produto: ");
+            scanf("%d\n", &id);
 
+            printf("Digite o numero de unidades: ");
+            scanf("%d\n", &qtd);
+
+            loja = vendeProdutoLoja(loja, id, qtd);
         }
 
         if(option == 'D'){
@@ -56,15 +64,15 @@ int main(){
         }
 
         if(option == 'I'){
-
+            imprimeProdutosLoja(loja);
         }
 
         if(option == 'F'){
             break;
         }
-    }
 
-    imprimeProdutosLoja(loja);
+        printf("\n");
+    }
 
     return 0;
 }

@@ -31,7 +31,7 @@ tProduct leProduto(); //já foi
  * @param id Identificador de cada produto.
  * @return Produto criado.
  */
-tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int id); //Descobrir para que serve
+tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int id); //já foi
 
 /**
  * @brief Retorna o desconto atual de um produto
@@ -59,7 +59,7 @@ float obtemPrecoComDesconto(tProduct produto);
  * @param produto O produto.
  * @return O estoque.
 */
-int obtemEstoque(tProduct produto); //Descobrir para que serve
+int obtemEstoque(tProduct produto); 
 
 /**
  * @brief Retorna as vendas atual de um produto
@@ -73,7 +73,7 @@ int obtemVendas(tProduct produto);
  * @param produto O produto.
  * @return O id.
 */
-int obtemId(tProduct produto);
+int obtemId(tProduct produto); //já foi
 
 /**
  * @brief Aumenta o estoque de um produto, caso qtd seja válido (>0).

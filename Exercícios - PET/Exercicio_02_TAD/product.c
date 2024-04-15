@@ -1,27 +1,49 @@
 #include <stdio.h>
+#include <string.h>
 #include "product.h"
 
 tProduct leProduto(){
-    tProduct produto;
+    char nome[MAX_NOME];
+    int id;
+    float preco;
+    float desconto;
+    int estoque;
 
     printf("Nome do Produto: ");
-    scanf("%[^\n]\n", produto.nome);
+    scanf("%[^\n]\n", nome);
 
     printf("ID: ");
-    scanf("%d\n", &produto.id);
+    scanf("%d\n", &id);
 
     printf("Preco: ");
-    scanf("%f\n", &produto.preco);
+    scanf("%f\n", &preco);
 
     printf("Desconto: ");
-    scanf("%f\n", &produto.desconto);
+    scanf("%f\n", &desconto);
 
     printf("Estoque: ");
-    scanf("%d\n", &produto.estoque);
+    scanf("%d\n", &estoque);
 
+    tProduct produto = criaProduto(nome, desconto, preco, estoque, id);
+
+    return produto;
+}
+
+tProduct criaProduto(char* nome, float desconto, float preco, int estoque, int id){
+    tProduct produto;
+
+    strcpy(produto.nome, nome);
+    produto.id = id;
+    produto.preco = preco;
+    produto.desconto = desconto;
+    produto.estoque = estoque;
     produto.vendas = 0;
 
     return produto;
+}
+
+int obtemId(tProduct produto){
+    return produto.id;
 }
 
 tProduct aumentaEstoqueProduto(tProduct produto, int qtd){
@@ -35,7 +57,9 @@ tProduct aumentaEstoqueProduto(tProduct produto, int qtd){
 }
 
 bool ehMesmoId(tProduct produto, int id){
-    if(id == produto.id){
+    int idProduto = obtemId(produto);
+    
+    if(idProduto == id){
         return true;
     }else{
         return false;

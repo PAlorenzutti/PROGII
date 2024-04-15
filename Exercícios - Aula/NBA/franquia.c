@@ -81,7 +81,7 @@ void printFranquias(tFranquia franquias[], int qtdFranquias){
     for(int i = 0; i < qtdFranquias; i++){
         printf("%s %s %d %d %.2f %d %d\n", franquias[i].nome, franquias[i].sigla, 
         franquias[i].vitorias, franquias[i].derrotas, franquias[i].aproveitamento,
-        franquias[i].vitoriasCasa, franquias[i].vitoriasFora);
+        franquias[i].vitoriasFora, franquias[i].vitoriasCasa);
     }
 }
 

@@ -4,8 +4,7 @@
 int main()
 {
     float R, area, volume;
-
-    printf("Digite o raio da esfera:\n");
+    
     scanf("%f", &R);
 
     CalculaArea(R, &area);

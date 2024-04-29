@@ -21,6 +21,7 @@ int ordena(int *valor1, int *valor2, int *valor3){
         temp = *valor2;
         *valor2 = *valor1;
         *valor1 = temp;
+        //2 5 8
     }
 
     if(*valor1 == *valor2 && *valor2 == *valor3){

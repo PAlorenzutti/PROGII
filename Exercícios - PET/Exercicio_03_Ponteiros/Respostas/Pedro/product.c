@@ -119,6 +119,6 @@ void imprimeProduto(tProduct *produto){
         precoAtual = 43.26;
     }
 
-    printf("Produto: %s, Preco atual: %.2f, Qtd no estoque: %d, Qtd vendida: %d\n", (*produto).nome, precoAtual, (*produto).estoque, (*produto).vendas);         
+    printf("Produto: %s, ID: %d, Preco atual: %.2f, Qtd no estoque: %d, Qtd vendida: %d\n", (*produto).nome, (*produto).id, precoAtual, (*produto).estoque, (*produto).vendas);         
        
 }

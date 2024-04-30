@@ -109,6 +109,8 @@ int main(){
             if(option == 'I'){
                 ordenaLojaID(&loja);
             }
+
+            printf("Produtos ordenados com sucesso!\n");
         }
 
         if(option == 'F'){

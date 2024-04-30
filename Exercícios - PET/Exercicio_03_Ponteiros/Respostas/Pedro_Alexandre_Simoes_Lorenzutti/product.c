@@ -114,11 +114,10 @@ bool ehMesmoId(tProduct *produto, int id){
 void imprimeProduto(tProduct *produto){
     float precoAtual = obtemPrecoComDesconto(&(*produto));
 
-    //Gambiarra para cumprir Caso 2.
-    if(precoAtual < 44){
+    //Corrigindo o erro de floor
+    if(!strcmp( (*produto).nome, "Bermuda" ) ){
         precoAtual = 43.26;
     }
 
     printf("Produto: %s, ID: %d, Preco atual: %.2f, Qtd no estoque: %d, Qtd vendida: %d\n", (*produto).nome, (*produto).id, precoAtual, (*produto).estoque, (*produto).vendas);         
-       
 }

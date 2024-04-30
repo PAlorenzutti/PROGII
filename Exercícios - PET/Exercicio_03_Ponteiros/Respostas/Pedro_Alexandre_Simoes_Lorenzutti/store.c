@@ -69,8 +69,6 @@ void ordenaLojaVendas(tStore *loja){
             }
         }
     }
-
-    printf("Produtos ordenados com sucesso!\n");
 }
 
 void ordenaLojaPreco(tStore *loja){
@@ -85,8 +83,6 @@ void ordenaLojaPreco(tStore *loja){
             }
         }
     }
-
-    printf("Produtos ordenados com sucesso!\n");
 }
 
 void ordenaLojaEstoque(tStore *loja){
@@ -101,8 +97,6 @@ void ordenaLojaEstoque(tStore *loja){
             }
         }
     }
-
-    printf("Produtos ordenados com sucesso!\n");   
 }
 
 void ordenaLojaID(tStore *loja){
@@ -117,6 +111,4 @@ void ordenaLojaID(tStore *loja){
             }
         }
     }
-
-    printf("Produtos ordenados com sucesso!\n");   
 }

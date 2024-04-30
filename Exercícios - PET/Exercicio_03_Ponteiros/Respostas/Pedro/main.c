@@ -3,7 +3,7 @@
 #include "store.h"
 #include "product.h"
 
-char menu(){
+char menuPrincipal(){
     char option;
 
     printf("Menu:\n");
@@ -12,7 +12,22 @@ char menu(){
     printf(" V - Vender Produto\n");
     printf(" D - Atualizar desconto de Produto\n");
     printf(" I - Imprimir Produtos\n");
+    printf(" O - Ordenar Produtos\n");
     printf(" F - Finalizar Programa\n");
+
+    scanf("%c\n", &option);
+
+    return option;
+}
+
+char menuOrdem(){
+    char option;
+
+    printf("Escolha a ordenacao:\n");
+    printf(" V - Numero de vendas\n");
+    printf(" P - Preco\n");
+    printf(" E - Numero de estoque\n");
+    printf(" I - ID\n");
 
     scanf("%c\n", &option);
 
@@ -25,7 +40,7 @@ int main(){
     abreLoja(&loja);
 
     while(true){
-        char option = menu();
+        char option = menuPrincipal();
 
         if(option == 'C'){
             tProduct produto;
@@ -74,6 +89,26 @@ int main(){
 
         if(option == 'I'){
             imprimeProdutosLoja(&loja);
+        }
+
+        if(option == 'O'){
+            option = menuOrdem();
+
+            if(option == 'V'){
+                ordenaLojaVendas(&loja);
+            }
+
+            if(option == 'P'){
+
+            }
+
+            if(option == 'E'){
+
+            }
+
+            if(option == 'I'){
+
+            }
         }
 
         if(option == 'F'){

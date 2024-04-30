@@ -56,3 +56,19 @@ void imprimeProdutosLoja(tStore *loja){
         imprimeProduto(&(*loja).produtos[i]);
     }
 }
+
+void ordenaLojaVendas(tStore *loja){
+    for(int i = 0; i < (*loja).nmProdutos; i++){
+        for(int j = 0; j < (*loja).nmProdutos - 1; j++){
+            if( obtemVendas( &(*loja).produtos[j] ) < obtemVendas( &(*loja).produtos[j + 1] ) ){
+                tProduct produtoTemp;
+
+                produtoTemp = (*loja).produtos[j];
+                (*loja).produtos[j] = (*loja).produtos[j + 1];
+                (*loja).produtos[j + 1] = produtoTemp;
+            }
+        }
+    }
+
+    printf("Produtos ordenados com sucesso!\n");
+}

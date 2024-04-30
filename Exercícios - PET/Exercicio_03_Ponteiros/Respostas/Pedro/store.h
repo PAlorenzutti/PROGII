@@ -67,24 +67,24 @@ void imprimeProdutosLoja(tStore *loja); //já foi
  * @brief Ordena a loja na ordem DECRESCENTE de numero de vendas
  * @param loja O endereço da loja.
 */
-void ordenaLojaVendas(tStore *loja);
+void ordenaLojaVendas(tStore *loja); //já foi
 
 /**
  * @brief Ordena a loja na ordem DECRESCENTE de preço (levando em conta o desconto)
  * @param loja O endereço da loja.
 */
-void ordenaLojaPreco(tStore *loja);
+void ordenaLojaPreco(tStore *loja); //já foi
 
 /**
  * @brief Ordena a loja na ordem DECRESCENTE de numero de estoque
  * @param loja O endereço da loja.
 */
-void ordenaLojaEstoque(tStore *loja);
+void ordenaLojaEstoque(tStore *loja); //já foi
 
 /**
  * @brief Ordena a loja na ordem CRESCENTE de ID
  * @param loja O endereço da loja.
 */
-void ordenaLojaID(tStore *loja);
+void ordenaLojaID(tStore *loja); //já foi
 
 #endif

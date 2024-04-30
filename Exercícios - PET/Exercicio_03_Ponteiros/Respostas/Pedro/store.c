@@ -72,3 +72,51 @@ void ordenaLojaVendas(tStore *loja){
 
     printf("Produtos ordenados com sucesso!\n");
 }
+
+void ordenaLojaPreco(tStore *loja){
+    for(int i = 0; i < (*loja).nmProdutos; i++){
+        for(int j = 0; j < (*loja).nmProdutos - 1; j++){
+            if( obtemPrecoComDesconto( &(*loja).produtos[j] ) < obtemPrecoComDesconto( &(*loja).produtos[j + 1] ) ){
+                tProduct produtoTemp;
+
+                produtoTemp = (*loja).produtos[j];
+                (*loja).produtos[j] = (*loja).produtos[j + 1];
+                (*loja).produtos[j + 1] = produtoTemp;
+            }
+        }
+    }
+
+    printf("Produtos ordenados com sucesso!\n");
+}
+
+void ordenaLojaEstoque(tStore *loja){
+    for(int i = 0; i < (*loja).nmProdutos; i++){
+        for(int j = 0; j < (*loja).nmProdutos - 1; j++){
+            if( obtemEstoque( &(*loja).produtos[j] ) < obtemEstoque( &(*loja).produtos[j + 1] ) ){
+                tProduct produtoTemp;
+
+                produtoTemp = (*loja).produtos[j];
+                (*loja).produtos[j] = (*loja).produtos[j + 1];
+                (*loja).produtos[j + 1] = produtoTemp;
+            }
+        }
+    }
+
+    printf("Produtos ordenados com sucesso!\n");   
+}
+
+void ordenaLojaID(tStore *loja){
+    for(int i = 0; i < (*loja).nmProdutos; i++){
+        for(int j = 0; j < (*loja).nmProdutos - 1; j++){
+            if( obtemId( &(*loja).produtos[j] ) > obtemId( &(*loja).produtos[j + 1] ) ){
+                tProduct produtoTemp;
+
+                produtoTemp = (*loja).produtos[j];
+                (*loja).produtos[j] = (*loja).produtos[j + 1];
+                (*loja).produtos[j + 1] = produtoTemp;
+            }
+        }
+    }
+
+    printf("Produtos ordenados com sucesso!\n");   
+}

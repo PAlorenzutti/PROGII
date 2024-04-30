@@ -11,8 +11,8 @@ char menuPrincipal(){
     printf(" E - Estocar Produto\n");
     printf(" V - Vender Produto\n");
     printf(" D - Atualizar desconto de Produto\n");
-    printf(" I - Imprimir Produtos\n");
     printf(" O - Ordenar Produtos\n");
+    printf(" I - Imprimir Produtos\n");
     printf(" F - Finalizar Programa\n");
 
     scanf("%c\n", &option);
@@ -24,7 +24,7 @@ char menuOrdem(){
     char option;
 
     printf("Escolha a ordenacao:\n");
-    printf(" V - Numero de vendas\n");
+    printf(" V - Numero de Vendas\n");
     printf(" P - Preco\n");
     printf(" E - Numero de estoque\n");
     printf(" I - ID\n");
@@ -99,15 +99,15 @@ int main(){
             }
 
             if(option == 'P'){
-
+                ordenaLojaPreco(&loja);
             }
 
             if(option == 'E'){
-
+                ordenaLojaEstoque(&loja);
             }
 
             if(option == 'I'){
-
+                ordenaLojaID(&loja);
             }
         }
 

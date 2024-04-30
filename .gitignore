@@ -3,3 +3,5 @@
 *.o
 *.pdf
 *.7zip
+*.a
+main

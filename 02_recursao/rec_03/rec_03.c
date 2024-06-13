@@ -8,6 +8,8 @@ int ContaOcorrencias(int* vet, int numElementos, int numeroProcurado){
         return 0;
     }
 
+    //vet[numElementos - 1] porque são 5 elementos, porém estão posicionados do 0 ao 4, por exemplo.
+
     if(vet[numElementos - 1] == numeroProcurado){
         numOcorrrencias++;
         return numOcorrrencias + ContaOcorrencias(vet, numElementos - 1, numeroProcurado);

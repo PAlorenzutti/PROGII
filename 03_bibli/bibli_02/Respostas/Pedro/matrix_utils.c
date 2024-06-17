@@ -14,10 +14,14 @@ void matrix_print(int rows, int cols, int matrix[rows][cols]){
         printf("|");
 
         for(int j = 0; j < cols; j++){
-            printf("%d ", matrix[i][j]);
+            if(j + 1 == cols){
+                printf("%d", matrix[i][j]);
+            }else{
+                printf("%d ", matrix[i][j]);
+            }
         }
 
-        printf("\b|\n");
+        printf("|\n");
     }
 }
 

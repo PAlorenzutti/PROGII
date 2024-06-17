@@ -11,3 +11,6 @@ geraos: matrix_utils.c
 
 clean:
 	rm -rf *.o 
+
+remove:
+	rm -rf *.a main saida.txt

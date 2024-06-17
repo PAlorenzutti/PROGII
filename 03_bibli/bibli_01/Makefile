@@ -1,10 +1,13 @@
-all: geraos principal
+all: geraos main clean
 
-principal: principal.o esfera_utils.o
-	gcc principal.o esfera_utils.o -o principal -lm
+main: main.o esfera_utils.o
+	gcc main.o esfera_utils.o -o main -lm
 
-geraos: principal.c esfera_utils.c
-	gcc -c principal.c esfera_utils.c
+geraos: main.c esfera_utils.c
+	gcc -c main.c esfera_utils.c
 
 clean:
-	rm -rf *.o principal
+	rm -rf *.o
+
+remove: 
+	rm -rf main saida.txt

@@ -5,7 +5,6 @@ int main()
 {
     float R;
 
-    printf("Digite o raio da esfera:\n");
     scanf("%f", &R);
 
     printf("Area: %.2f\n", calcula_area(R));

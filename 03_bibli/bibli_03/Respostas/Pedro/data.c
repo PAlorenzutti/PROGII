@@ -24,7 +24,7 @@ void imprimeMesExtenso(int mes){
 }
 
 void imprimeDataExtenso(int dia, int mes, int ano){
-    printf("%d de ", dia);
+    printf("%02d de ", dia);
     imprimeMesExtenso(mes);
     printf("de %d\n", ano);
 }
@@ -119,9 +119,17 @@ int calculaDiferencaDias(int dia1, int mes1, int ano1, int dia2, int mes2, int a
         ano2 = temp;
     }
 
-    if(ano1 == ano2){
-        printf("%d - %d", calculaDiasAteMes(mes1, ano1) + dia1, calculaDiasAteMes(mes2, ano2) + dia2);
-        
+    if(ano1 == ano2){    
         return (calculaDiasAteMes(mes1, ano1) + dia1) - (calculaDiasAteMes(mes2, ano2) + dia2); 
+    }else{
+        int somaDias = 0;
+
+        somaDias = ( calculaDiasAteMes(mes1, ano1) + dia1 ) + ( (calculaDiasAteMes(12, ano2) + 31) - (calculaDiasAteMes(mes2, ano2) + dia2) );
+        
+        for(int i = ano2 + 1; i < ano1; i++){
+            somaDias += calculaDiasAteMes(12, i) + 31;
+        }
+
+        return somaDias;
     }
 }

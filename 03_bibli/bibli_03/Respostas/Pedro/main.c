@@ -35,7 +35,7 @@ int main(){
         printf("As datas sao iguais\n");
     }
 
-    printf("A diferenca em dias entre as datas eh: %d dias\n", calculaDiferencaDias(dia1, mes1, ano1, dia2, mes2, ano2));
+    printf("A diferenca em dias entre as datas eh: %02d dias\n", calculaDiferencaDias(dia1, mes1, ano1, dia2, mes2, ano2));
 
     return 0;
 }

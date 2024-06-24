@@ -12,5 +12,10 @@ int main(){
 
         ComecaJogo(jogo);
 
+        if(!ContinuaJogo()){
+            break;
+        }
     }
+
+    return 0;
 }

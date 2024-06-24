@@ -23,7 +23,7 @@ tJogo CriaJogo(); //já foi
  * 
  * @param jogo o jogo a ser iniciado.
  */
-void ComecaJogo(tJogo jogo);
+void ComecaJogo(tJogo jogo); //já foi
 
 
 /**
@@ -33,7 +33,7 @@ void ComecaJogo(tJogo jogo);
  * 
  * @return 1 se o jogo acabou, 0 caso contrário.
  */
-int AcabouJogo(tJogo jogo);
+int AcabouJogo(tJogo jogo); //já foi
 
 
 /**
@@ -41,6 +41,6 @@ int AcabouJogo(tJogo jogo);
  * 
  * @return 1 se o usuário deseja jogar novamente, 0 caso contrário.
  */
-int ContinuaJogo();
+int ContinuaJogo(); //já foi
 
 #endif

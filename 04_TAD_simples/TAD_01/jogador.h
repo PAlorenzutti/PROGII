@@ -40,6 +40,6 @@ tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro);
  * 
  * @return 1 se o jogador venceu, 0 caso contrário.
  */
-int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro);
+int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro); //já foi
 
 #endif

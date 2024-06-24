@@ -23,7 +23,7 @@ tJogada LeJogada(); //já foi (falta entender a variável sucesso)
  * 
  * @return a coordenada X da jogada.
  */
-int ObtemJogadaX(tJogada jogada);
+int ObtemJogadaX(tJogada jogada); //já foi
 
 
 /**
@@ -33,7 +33,7 @@ int ObtemJogadaX(tJogada jogada);
  * 
  * @return a coordenada Y da jogada.
  */
-int ObtemJogadaY(tJogada jogada);
+int ObtemJogadaY(tJogada jogada); //já foi
 
 
 /**

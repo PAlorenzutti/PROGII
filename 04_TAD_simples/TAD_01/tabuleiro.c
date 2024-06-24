@@ -20,7 +20,7 @@ tTabuleiro CriaTabuleiro(){
 }
 
 tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y){
-    tabuleiro.posicoes[x][y] == peca;
+    tabuleiro.posicoes[x][y] = peca;
 
     return tabuleiro;
 }
@@ -49,16 +49,19 @@ int EstaLivrePosicaoTabuleiro(tTabuleiro tabuleiro, int x, int y){
     if(tabuleiro.posicoes[x][y] == tabuleiro.pecaVazio){
         return 1;
     }else{
+        printf("Posicao invalida (OCUPADA - [%d,%d] )!\n", x, y);
         return 0;
     }
 }
 
 int EhPosicaoValidaTabuleiro(int x, int y){
     if(x > 2 || y > 2){
+        printf("Posicao invalida (FORA DO TABULEIRO - [%d,%d] )\n", x, y);
         return 0;
     }
 
     if(x < 0 || y < 0){
+        printf("Posicao invalida (FORA DO TABULEIRO - [%d,%d] )\n", x, y);
         return 0;
     }
 

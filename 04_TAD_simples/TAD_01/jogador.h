@@ -3,7 +3,6 @@
 
 #include "tabuleiro.h"
 
-
 #define ID_JOGADOR_1 1
 #define ID_JOGADOR_2 2
 
@@ -19,7 +18,7 @@ typedef struct{
  * 
  * @return tJogador o jogador criado.
  */
-tJogador CriaJogador(int idJogador);
+tJogador CriaJogador(int idJogador); //já foi
 
 
 /**

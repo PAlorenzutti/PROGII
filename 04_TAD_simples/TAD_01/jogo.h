@@ -8,7 +8,6 @@ typedef struct{
     tTabuleiro tabuleiro;
     tJogador jogador1;
     tJogador jogador2;
-    
 } tJogo;
 
 /**
@@ -16,7 +15,7 @@ typedef struct{
  * 
  * @return o jogo criado.
  */
-tJogo CriaJogo();
+tJogo CriaJogo(); //já foi
 
 
 /**

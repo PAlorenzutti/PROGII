@@ -13,7 +13,7 @@ typedef struct{
  * Se a jogada foi lida com sucesso, ou seja, foi lido um valor para x e outro para y, sucesso = 1, caso contrário, sucesso = 0.
  * @return a jogada lida.
  */
-tJogada LeJogada();
+tJogada LeJogada(); //já foi (falta entender a variável sucesso)
 
 
 /**

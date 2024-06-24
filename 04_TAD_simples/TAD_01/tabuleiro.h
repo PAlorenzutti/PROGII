@@ -18,7 +18,7 @@ typedef struct{
  * 
  * @return o tabuleiro criado.
  */
-tTabuleiro CriaTabuleiro();
+tTabuleiro CriaTabuleiro(); //já foi
 
 
 /**
@@ -31,7 +31,7 @@ tTabuleiro CriaTabuleiro();
  * 
  * @return o tabuleiro atualizado.
  */
-tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y);
+tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y); //já foi
 
 
 /**
@@ -41,7 +41,7 @@ tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y);
  * 
  * @return 1 se há posição livre, 0 caso contrário.
  */
-int TemPosicaoLivreTabuleiro(tTabuleiro tabuleiro);
+int TemPosicaoLivreTabuleiro(tTabuleiro tabuleiro); //já foi
 
 
 /**
@@ -54,7 +54,7 @@ int TemPosicaoLivreTabuleiro(tTabuleiro tabuleiro);
  * 
  * @return 1 se a posição está marcada com a peça do jogador, 0 caso contrário.
  */
-int EstaMarcadaPosicaoPecaTabuleiro(tTabuleiro tabuleiro, int x, int y, int peca);
+int EstaMarcadaPosicaoPecaTabuleiro(tTabuleiro tabuleiro, int x, int y, int peca); //já foi
 
 
 /**
@@ -66,7 +66,7 @@ int EstaMarcadaPosicaoPecaTabuleiro(tTabuleiro tabuleiro, int x, int y, int peca
  * 
  * @return 1 se a posição está livre, 0 caso contrário.
  */
-int EstaLivrePosicaoTabuleiro(tTabuleiro tabuleiro, int x, int y);
+int EstaLivrePosicaoTabuleiro(tTabuleiro tabuleiro, int x, int y); //já foi
 
 /**
  * Verifica se a posição do tabuleiro é válida.
@@ -75,7 +75,7 @@ int EstaLivrePosicaoTabuleiro(tTabuleiro tabuleiro, int x, int y);
  * @param y a coordenada y da posição a ser verificada.
  * @return 1 se a posição é válida, 0 caso contrário.
 */
-int EhPosicaoValidaTabuleiro(int x, int y);
+int EhPosicaoValidaTabuleiro(int x, int y); //já foi
 
 
 /**
@@ -83,6 +83,6 @@ int EhPosicaoValidaTabuleiro(int x, int y);
  * 
  * @param tabuleiro o tabuleiro atual.
  */
-void ImprimeTabuleiro(tTabuleiro tabuleiro);
+void ImprimeTabuleiro(tTabuleiro tabuleiro); //já foi
 
 #endif

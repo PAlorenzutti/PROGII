@@ -28,7 +28,7 @@ int main() {
                 exibirEventos(eventos, &numEventos); 
                 break; 
             case 3: 
-                //trocarDataEvento(eventos, &numEventos); 
+                trocarDataEvento(eventos, &numEventos); 
                 break; 
             case 4: 
                 int indiceA, indiceB; 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "jogador.h"
 #include "jogada.h"
 
@@ -12,12 +13,22 @@ tJogador CriaJogador(int idJogador){
 
 tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro){
     printf("Jogador %d\n", jogador.id);
-    tJogada jogada = LeJogada();
 
-    int x = ObtemJogadaX(jogada);
-    int y = ObtemJogadaY(jogada);
+    int x;
+    int y;
 
-    
+    //enquanto o jogador não fizer uma jogada digna, não sai
+    while(true){
+        //pega a jogada e suas coordenadas;
+        tJogada jogada = LeJogada();
+        x = ObtemJogadaX(jogada);
+        y = ObtemJogadaY(jogada);
+
+        if(EhPosicaoValidaTabuleiro(y,x) && EstaLivrePosicaoTabuleiro(tabuleiro, y, x)){
+            break;
+        }
+    }
+
     if(jogador.id == ID_JOGADOR_1){
         tabuleiro = MarcaPosicaoTabuleiro(tabuleiro, tabuleiro.peca1, y, x);
     }
@@ -26,7 +37,7 @@ tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro){
         tabuleiro = MarcaPosicaoTabuleiro(tabuleiro, tabuleiro.peca2, y, x);
     }
 
-    //printa tabuleiro
+    //printa jogada no tabuleiro;
     printf("Jogada [%d,%d]!\n", x, y);
     ImprimeTabuleiro(tabuleiro);
 
@@ -57,6 +68,7 @@ int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro){
         }
 
         if(somaPecas == 3){
+            printf("entrou linha\n");
             printf("JOGADOR %d Venceu!\n", jogador.id);
             return 1;
         }
@@ -73,6 +85,7 @@ int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro){
         }
 
         if(somaPecas == 3){
+            printf("entrou coluna\n");
             printf("JOGADOR %d Venceu!\n", jogador.id);
             return 1;
         }
@@ -88,12 +101,15 @@ int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro){
     }
 
     if(somaPecas == 3){
+        printf("entrou diagonal\n");
         printf("JOGADOR %d Venceu!\n", jogador.id);
         return 1;
     }
 
 
     //verificação diagonal secundária
+    somaPecas = 0;
+
     for(int i = 0; i < TAM_TABULEIRO; i++){
         if(tabuleiro.posicoes[i][2 - i] == peca){
             somaPecas++;
@@ -101,6 +117,7 @@ int VenceuJogador(tJogador jogador, tTabuleiro tabuleiro){
     }
 
     if(somaPecas == 3){
+        printf("entrou diagonal sec\n");
         printf("JOGADOR %d Venceu!\n", jogador.id);
         return 1;
     }

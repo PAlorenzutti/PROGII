@@ -6,9 +6,7 @@ tJogada LeJogada(){
     int x, y, sucesso;
 
     printf("Digite uma posicao (x e y):\n");
-    scanf("%d %d", &x, &y);
-
-    printf("%d %d\n", x, y);
+    scanf("%d %d\n", &x, &y);
 
     jogada.x = x;
     jogada.y = y;

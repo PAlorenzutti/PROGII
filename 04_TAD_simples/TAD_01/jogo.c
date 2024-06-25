@@ -5,10 +5,6 @@
 tJogo CriaJogo(){
     tJogo jogo;
 
-    return jogo;
-}
-
-void ComecaJogo(tJogo jogo){
     //definindo tabuleiro
     tTabuleiro tabuleiro = CriaTabuleiro();
     jogo.tabuleiro = tabuleiro;
@@ -17,6 +13,10 @@ void ComecaJogo(tJogo jogo){
     jogo.jogador1 = CriaJogador(ID_JOGADOR_1);
     jogo.jogador2 = CriaJogador(ID_JOGADOR_2);
 
+    return jogo;
+}
+
+void ComecaJogo(tJogo jogo){
     while(true){
         jogo.tabuleiro = JogaJogador(jogo.jogador1, jogo.tabuleiro);
 
@@ -62,6 +62,4 @@ int ContinuaJogo(){
     if(opcao == 'n'){
         return 0;
     }
-
-    return 0;
 }

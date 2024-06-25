@@ -28,7 +28,7 @@ tTabuleiro MarcaPosicaoTabuleiro(tTabuleiro tabuleiro, int peca, int x, int y){
 int TemPosicaoLivreTabuleiro(tTabuleiro tabuleiro){
     for(int i = 0; i < TAM_TABULEIRO; i++){
         for(int j = 0; j < TAM_TABULEIRO; j++){
-            if(EstaLivrePosicaoTabuleiro(tabuleiro, i, j)){
+            if(tabuleiro.posicoes[i][j] == tabuleiro.pecaVazio){
                 return 1;
             }
         }

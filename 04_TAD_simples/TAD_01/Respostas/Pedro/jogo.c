@@ -17,8 +17,14 @@ tJogo CriaJogo(){
 }
 
 void ComecaJogo(tJogo jogo){
+    int marcacoes = 0;
+    
     while(true){
         jogo.tabuleiro = JogaJogador(jogo.jogador1, jogo.tabuleiro);
+
+        if(VenceuJogador(jogo.jogador1, jogo.tabuleiro)){
+            break;
+        }
 
         if(AcabouJogo(jogo)){
             break;
@@ -26,22 +32,16 @@ void ComecaJogo(tJogo jogo){
 
         jogo.tabuleiro = JogaJogador(jogo.jogador2, jogo.tabuleiro);
 
-        if(AcabouJogo(jogo)){
+        if(VenceuJogador(jogo.jogador2, jogo.tabuleiro)){
             break;
         }
     }
 }
 
 int AcabouJogo(tJogo jogo){
-    if(!TemPosicaoLivreTabuleiro(jogo.tabuleiro)){
-        return 1;
-    }
-
-    if(VenceuJogador(jogo.jogador1, jogo.tabuleiro)){
-        return 1;
-    }
-    
-    if(VenceuJogador(jogo.jogador2, jogo.tabuleiro)){
+    //se não tiver posição livre no tabuleiro, acaba o jogo
+    if(TemPosicaoLivreTabuleiro(jogo.tabuleiro) == 0){
+        printf("Sem vencedor!\n");
         return 1;
     }
 

@@ -29,7 +29,7 @@ tJogador CriaJogador(int idJogador); //já foi
  * 
  * @return o tabuleiro atualizado com a jogada do jogador.
  */
-tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro);
+tTabuleiro JogaJogador(tJogador jogador, tTabuleiro tabuleiro); //já foi
 
 
 /**

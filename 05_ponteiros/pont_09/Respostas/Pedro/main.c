@@ -4,7 +4,7 @@
 int main(){
     //Pegando o número de pessoas a serem inseridas
     int numPessoas;
-    scanf("%d", &numPessoas);
+    scanf("%d\n", &numPessoas);
 
     //criando vetor com pessoas
     tPessoa pessoas[numPessoas];
@@ -16,10 +16,9 @@ int main(){
         LePessoa(&pessoas[i]);
     }
 
-    //associar pessoas
-    //AssociaFamiliasGruposPessoas(pessoas);
+    AssociaFamiliasGruposPessoas(pessoas);
 
-    //loop para imprimir pessoas
+    //se não tiver pai nem mãe, não imprime
     for(int i = 0; i < numPessoas; i++){
         ImprimePessoa(&pessoas[i]);
     }

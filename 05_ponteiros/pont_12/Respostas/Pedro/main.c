@@ -12,10 +12,8 @@ int produto(int num1, int num2){
 int main(){
     Vetor vetor;
 
-    scanf("%d\n", &vetor.tamanhoUtilizado);
-
     LeVetor(&vetor);
 
-    printf("Soma: %d\n", AplicarOperacaoVetor(&vetor, soma) - 1);
+    printf("Soma: %d\n", AplicarOperacaoVetor(&vetor, soma));
     printf("Produto: %d\n", AplicarOperacaoVetor(&vetor, produto));
 }

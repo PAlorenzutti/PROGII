@@ -6,8 +6,8 @@ main: main.o
 geraA: pessoa.o
 	ar rcs libpessoa.a pessoa.o
 
-geraos: main.c pessoa.c
-	gcc -c main.c pessoa.c
+geraos: Respostas/Pedro/main.c Respostas/Pedro/pessoa.c
+	gcc -c Respostas/Pedro/main.c Respostas/Pedro/pessoa.c
 
 clean:
 	rm -rf *.o 

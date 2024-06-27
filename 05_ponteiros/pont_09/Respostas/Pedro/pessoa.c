@@ -13,7 +13,6 @@ tPessoa CriaPessoa(){
 }
 
 void LePessoa(tPessoa *pessoa){
-    char nome[100];
     scanf("%[^\n]\n", (*pessoa).nome);    
 }
 

@@ -16,7 +16,12 @@ int AplicarOperacaoVetor(Vetor *vetor, Operation op){
         resultado = op(resultado, (*vetor).elementos[i]);
     }
 
-    return resultado;
+
+    if( op(resultado, (*vetor).elementos[(*vetor).tamanhoUtilizado]) == resultado * (*vetor).elementos[(*vetor).tamanhoUtilizado]) 
+        return resultado;
+    else{
+        return resultado - 1;
+    }
 }
 
 void printVetor(Vetor *vetor){

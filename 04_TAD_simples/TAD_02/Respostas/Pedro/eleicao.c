@@ -47,6 +47,13 @@ tEleicao RealizaEleicao(tEleicao eleicao){
     //lê o número de eleitores;
     int numEleitores;
     scanf("%d\n", &numEleitores);
+
+    //lendo cada eleitor
+    for(int i = 0; i < numEleitores; i++){
+        tEleitor eleitor = LeEleitor();
+    }
+
+    return eleicao;
 }
 
 void ImprimeEleicao(tEleicao eleicao){

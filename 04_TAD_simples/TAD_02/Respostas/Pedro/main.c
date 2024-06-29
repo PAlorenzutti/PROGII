@@ -7,7 +7,7 @@
 int main(){
     tEleicao eleicao = InicializaEleicao();
 
-    //eleicao = RealizaEleicao(eleicao);
+    eleicao = RealizaEleicao(eleicao);
 
     ImprimeEleicao(eleicao);
 

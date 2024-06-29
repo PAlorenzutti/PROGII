@@ -31,7 +31,7 @@ typedef struct {
  * Ainda nessa função, é lido a quantidade de candidatos e os candidatos são lidos e armazenados.
  * @return Eleição inicializada.
  */
-tEleicao InicializaEleicao();
+tEleicao InicializaEleicao(); //já foi
 
 /**
  * @brief Realiza uma eleição.
@@ -39,7 +39,7 @@ tEleicao InicializaEleicao();
  * @param eleicao Eleição a ser realizada.
  * @return Eleição com os resultados da votação.
  */
-tEleicao RealizaEleicao(tEleicao eleicao);
+tEleicao RealizaEleicao(tEleicao eleicao); //já foi
 
 /**
  * @brief Imprime o resultado da eleição na tela a partir da aparucao dos votos.

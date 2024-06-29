@@ -10,6 +10,7 @@ tCandidato CriaCandidato(char *nome, char *partido, char cargo, int id){
     strcpy(candidato.partido, partido);
     candidato.cargo = cargo;
     candidato.id = id;
+    candidato.votos = 0;
 
     return candidato;
 }
@@ -29,11 +30,24 @@ tCandidato LeCandidato(){
     return candidato;
 }
 
+int VerificaIdCandidato(tCandidato candidato, int id){
+    if(candidato.id == id){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 char ObtemCargo(tCandidato candidato){
     return candidato.cargo;
 }
 
+tCandidato IncrementaVotoCandidato(tCandidato candidato){
+    candidato.votos++;
+    return candidato;
+}
+
 //teste
-void ImprimeCandidato (tCandidato candidato){
-    printf("%s, %s, %c, %d\n", candidato.nome, candidato.partido, candidato.cargo, candidato.id);
+void ImprimeCandidatoTeste (tCandidato candidato){
+    printf("%s, %s, %c, %d, votos: %d\n", candidato.nome, candidato.partido, candidato.cargo, candidato.id, candidato.votos);
 }

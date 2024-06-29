@@ -9,7 +9,7 @@ int main(){
 
     eleicao = RealizaEleicao(eleicao);
 
-    ImprimeEleicao(eleicao);
+    ImprimeResultadoEleicao(eleicao);
 
     return 0;
 }

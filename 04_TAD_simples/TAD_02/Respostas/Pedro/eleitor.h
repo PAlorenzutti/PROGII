@@ -44,4 +44,7 @@ int ObtemVotoGovernador(tEleitor eleitor);
  */
 int EhMesmoEleitor(tEleitor eleitor1, tEleitor eleitor2);
 
+//teste
+void ImprimeEleitor(tEleitor eleitor);
+
 #endif

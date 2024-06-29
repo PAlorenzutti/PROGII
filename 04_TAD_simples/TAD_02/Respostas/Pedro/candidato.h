@@ -17,13 +17,13 @@ typedef struct {
  * @param id Identificador do candidato.
  * @return Candidato criado.
  */
-tCandidato CriaCandidato(char *nome, char *partido, char cargo, int id);
+tCandidato CriaCandidato(char *nome, char *partido, char cargo, int id); //já foi
 
 /**
  * @brief Lê um candidato.
  * @return Candidato lido.
  */
-tCandidato LeCandidato();
+tCandidato LeCandidato(); //já foi
 
 /**
  * @brief Verifica se o identificador do candidato é igual ao informado.
@@ -31,7 +31,7 @@ tCandidato LeCandidato();
  * @param id Identificador a ser comparado.
  * @return 1 se o identificador é igual, 0 caso contrário.
  */
-int VerificaIdCandidato(tCandidato candidato, int id);
+int VerificaIdCandidato(tCandidato candidato, int id); //já foi
 
 /**
  * @brief Verifica se dois candidatos são iguais (dica: utilize para verificar se houve empate).
@@ -46,14 +46,14 @@ int EhMesmoCandidato(tCandidato candidato1, tCandidato candidato2);
  * @param candidato Candidato a ser verificado.
  * @return Cargo do candidato.
  */
-char ObtemCargo(tCandidato candidato);
+char ObtemCargo(tCandidato candidato); //já foi
 
 /**
  * @brief Incrementa 1 voto ao candidato.
  * @param candidato Candidato a ter os votos incrementados.
  * @return Candidato com a quantidade de votos incrementada.
  */
-tCandidato IncrementaVotoCandidato(tCandidato candidato);
+tCandidato IncrementaVotoCandidato(tCandidato candidato); //já foi
 
 /**
  * @brief Obtém a quantidade de votos do candidato.
@@ -75,9 +75,9 @@ float CalculaPercentualVotos(tCandidato candidato, int totalVotos);
  * @param candidato Candidato a ser impresso.
  * @param percentualVotos Percentual de votos do candidato.
  */
-//void ImprimeCandidato (tCandidato candidato, float percentualVotos);
+void ImprimeCandidato (tCandidato candidato, float percentualVotos);
 
 //teste
-void ImprimeCandidato (tCandidato candidato);
+void ImprimeCandidatoTeste (tCandidato candidato);
 
 #endif

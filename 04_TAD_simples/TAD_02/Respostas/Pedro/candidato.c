@@ -22,7 +22,7 @@ tCandidato LeCandidato(){
     int id;
     int votos;
 
-    scanf("%[^\n], %[^\n], %c, %d\n", nome, partido, &cargo, &id);
+    scanf("%49[^,], %49[^,], %c, %d\n", nome, partido, &cargo, &id);
 
     tCandidato candidato = CriaCandidato(nome, partido, cargo, id);
 

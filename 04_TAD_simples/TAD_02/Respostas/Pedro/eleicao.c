@@ -29,11 +29,13 @@ tEleicao InicializaEleicao(){
 
         if(ObtemCargo(candidato) == 'P'){
             //se o cargo for de presidente, coloca na lista de presidentes e aumenta o número;
-            eleicao.presidentes[i] = candidato;
+            eleicao.presidentes[eleicao.totalPresidentes] = candidato;
             eleicao.totalPresidentes++;
-        }else{
+        }
+        
+        if(ObtemCargo(candidato) == 'G'){
             //se o cargo for de governador, coloca na lista de governadores e aumenta o número;
-            eleicao.governadores[i] = candidato;
+            eleicao.governadores[eleicao.totalGovernadores] = candidato;
             eleicao.totalGovernadores++;
         }
     }

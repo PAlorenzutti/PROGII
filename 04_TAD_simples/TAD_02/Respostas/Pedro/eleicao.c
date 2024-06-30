@@ -131,9 +131,64 @@ void ImprimeResultadoEleicao(tEleicao eleicao){
     int votosNulos = eleicao.votosNulosPresidente + eleicao.votosNulosGovernador;
     int votosBrancos = eleicao.votosBrancosPresidente + eleicao.votosBrancosGovernador;
 
-    printf("- PRESIDENTE ELEITO:\n");
+    //soma de todos os votos da presidencia
+    int totalVotosPresidencia = eleicao.votosBrancosPresidente + eleicao.votosNulosPresidente;
 
-    printf("- GOVERNADOR ELEITO:\n");
+        //votos válidos dos candidatos a presidencia
+    for(int i = 0; i < eleicao.totalPresidentes; i++){
+        totalVotosPresidencia += ObtemVotos(eleicao.presidentes[i]);
+    }
+
+    //soma de todos os votos do governador
+    int totalVotosGovernador = eleicao.votosBrancosGovernador + eleicao.votosNulosGovernador;
+
+        //votos válidos dos candidatos a governador
+    for(int i = 0; i < eleicao.totalGovernadores; i++){
+        totalVotosGovernador += ObtemVotos(eleicao.governadores[i]);
+    }
+    
+    //procura presidente eleito
+    tCandidato presidenteEleito;
+    float percentualVotosPresidente = 0;
+    int maiorNumeroVotos = -1;
+
+    printf("- PRESIDENTE ELEITO: ");   
+    //procura index do presidente eleito
+    for(int i = 0; i < eleicao.totalPresidentes; i++){
+        //compara o presidente i com todos menos ele
+        for(int j = i; j < eleicao.totalPresidentes; j++){
+            if( !EhMesmoCandidato(eleicao.presidentes[i], eleicao.presidentes[j]) ){
+                int votosPresidente = ObtemVotos(eleicao.presidentes[i]);
+                if(votosPresidente > maiorNumeroVotos){
+                    maiorNumeroVotos = votosPresidente;
+                    presidenteEleito = eleicao.presidentes[i];
+                    percentualVotosPresidente = CalculaPercentualVotos(eleicao.presidentes[i], totalVotosPresidencia);
+                }
+            }
+        }
+    }
+
+    //Imprimindo presidente eleito
+    ImprimeCandidato(presidenteEleito, percentualVotosPresidente);
+
+    // Procura governador eleito
+    tCandidato governadorEleito;
+    float percentualVotosGovernador = 0;
+    int maxVotosGovernador = -1;
+
+    printf("- GOVERNADOR ELEITO: ");
+    //procura index do governador eleito
+    for(int i = 0; i < eleicao.totalGovernadores; i++){
+        int votos = ObtemVotos(eleicao.governadores[i]);
+        if(votos > maxVotosGovernador){
+            maxVotosGovernador = votos;
+            governadorEleito = eleicao.governadores[i];
+            percentualVotosGovernador = CalculaPercentualVotos(eleicao.governadores[i], totalVotosGovernador);
+        }
+    }
+
+    //Imprimindo governador eleito
+    ImprimeCandidato(governadorEleito, percentualVotosGovernador);
 
     printf("- NULOS E BRANCOS: %d, %d", votosNulos, votosBrancos);
 }

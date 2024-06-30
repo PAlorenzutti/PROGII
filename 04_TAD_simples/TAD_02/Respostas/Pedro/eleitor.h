@@ -14,27 +14,27 @@ typedef struct{
  * @param votoG Voto para governador do eleitor.
  * @return Eleitor criado.
  */
-tEleitor CriaEleitor(int id, int votoP, int votoG);
+tEleitor CriaEleitor(int id, int votoP, int votoG); //já foi
 
 /**
  * @brief Lê um eleitor do teclado.
  * @return Eleitor lido.
  */
-tEleitor LeEleitor();
+tEleitor LeEleitor(); //já foi
 
 /**
  * @brief Obtém o voto para presidente do eleitor.
  * @param eleitor Eleitor a ser verificado.
  * @return Voto para presidente do eleitor.
  */
-int ObtemVotoPresidente(tEleitor eleitor);
+int ObtemVotoPresidente(tEleitor eleitor); //já foi
 
 /**
  * @brief Obtém o voto para governador do eleitor.
  * @param eleitor Eleitor a ser verificado.
  * @return Voto para governador do eleitor.
  */
-int ObtemVotoGovernador(tEleitor eleitor);
+int ObtemVotoGovernador(tEleitor eleitor); //já foi
 
 /**
  * @brief Verifica se dois eleitores são iguais (dica: use para verificar se algum eleitor tentou registar um voto novamente).
@@ -42,7 +42,7 @@ int ObtemVotoGovernador(tEleitor eleitor);
  * @param eleitor2 Segundo eleitor a ser comparado.
  * @return 1 se os eleitores são iguais, 0 caso contrário.
  */
-int EhMesmoEleitor(tEleitor eleitor1, tEleitor eleitor2);
+int EhMesmoEleitor(tEleitor eleitor1, tEleitor eleitor2); //já foi
 
 //teste
 void ImprimeEleitor(tEleitor eleitor);

@@ -39,7 +39,7 @@ int VerificaIdCandidato(tCandidato candidato, int id){
 }
 
 int EhMesmoCandidato(tCandidato candidato1, tCandidato candidato2){
-    if(VerificaIdCandidato(candidato1, candidato2.id)){
+    if(candidato1.votos == candidato2.votos){
         return 1;
     }else{
         return 0;
@@ -65,9 +65,4 @@ float CalculaPercentualVotos(tCandidato candidato, int totalVotos){
 
 void ImprimeCandidato (tCandidato candidato, float percentualVotos){
     printf("%s (%s), %d voto(s), %.2f%%\n", candidato.nome, candidato.partido, candidato.votos, percentualVotos);
-}
-
-//teste
-void ImprimeCandidatoTeste (tCandidato candidato){
-    printf("%s, %s, %c, %d, voto(s): %d\n", candidato.nome, candidato.partido, candidato.cargo, candidato.id, candidato.votos);
 }

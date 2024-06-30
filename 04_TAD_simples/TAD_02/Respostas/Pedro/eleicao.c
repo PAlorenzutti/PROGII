@@ -131,82 +131,124 @@ void ImprimeResultadoEleicao(tEleicao eleicao){
     int votosNulos = eleicao.votosNulosPresidente + eleicao.votosNulosGovernador;
     int votosBrancos = eleicao.votosBrancosPresidente + eleicao.votosBrancosGovernador;
 
-    //soma de todos os votos da presidencia
-    int totalVotosPresidencia = eleicao.votosBrancosPresidente + eleicao.votosNulosPresidente;
+    //soma dos votos inválidos da presidencia
+    int votosInvalidosPresidente = eleicao.votosBrancosPresidente + eleicao.votosNulosPresidente;
 
-        //votos válidos dos candidatos a presidencia
+    //soma dos votos válidos dos candidatos a presidencia
+    int votosValidosPresidente = 0;
     for(int i = 0; i < eleicao.totalPresidentes; i++){
-        totalVotosPresidencia += ObtemVotos(eleicao.presidentes[i]);
+        votosValidosPresidente += ObtemVotos(eleicao.presidentes[i]);
     }
 
-    //soma de todos os votos do governador
-    int totalVotosGovernador = eleicao.votosBrancosGovernador + eleicao.votosNulosGovernador;
+    //soma de TODOS os votos da presidencia
+    int totalVotosPresidente = votosInvalidosPresidente + votosValidosPresidente;
 
-        //votos válidos dos candidatos a governador
+    //soma dos votos invalidos do governador
+    int votosInvalidosGovernador = eleicao.votosBrancosGovernador + eleicao.votosNulosGovernador;
+
+    //votos válidos dos candidatos a governador
+    int votosValidosGovernador = 0;
     for(int i = 0; i < eleicao.totalGovernadores; i++){
-        totalVotosGovernador += ObtemVotos(eleicao.governadores[i]);
+        votosValidosGovernador += ObtemVotos(eleicao.governadores[i]);
     }
-    
-    //procura presidente eleito
-    tCandidato presidenteEleito;
-    float percentualVotosPresidente = 0;
-    int maiorNumeroVotos = -1;
 
+    //soma de TODOS os votos a governador
+    int totalVotosGovernador = votosInvalidosGovernador + votosValidosGovernador;
+
+    //Imprime o presidente, caso não tenha empate ou indecisão.
     printf("- PRESIDENTE ELEITO: ");   
-    //procura index do presidente eleito
-    for(int i = 0; i < eleicao.totalPresidentes; i++){
-        //compara o presidente i com todos menos ele
-        for(int j = i; j < eleicao.totalPresidentes; j++){
-            if( !EhMesmoCandidato(eleicao.presidentes[i], eleicao.presidentes[j]) ){
-                int votosPresidente = ObtemVotos(eleicao.presidentes[i]);
-                if(votosPresidente > maiorNumeroVotos){
-                    maiorNumeroVotos = votosPresidente;
-                    presidenteEleito = eleicao.presidentes[i];
-                    percentualVotosPresidente = CalculaPercentualVotos(eleicao.presidentes[i], totalVotosPresidencia);
+
+    //se tiver menos votos validos do que invalidos, sem decisão.
+    if(votosValidosPresidente <= votosInvalidosPresidente){
+        printf("SEM DECISAO\n");
+    }else{
+        // Procura governador eleito
+        int indexPresidenteEleito;
+        float percentualVotosPresidente = 0;
+        int maxVotosGovernador = -1;
+
+        //procura index do governador eleito
+        for(int i = 0; i < eleicao.totalPresidentes; i++){
+            //obtem os votos do governador em questão;
+            int votos = ObtemVotos(eleicao.presidentes[i]);
+
+            //se os votos do governador forem maiores do que o maior, o eleito é atualizado e calculado;
+            if(votos > maxVotosGovernador){
+                maxVotosGovernador = votos;
+                indexPresidenteEleito = i;
+            }
+        }
+
+        //procura empate entre presidentes;
+        int empatePresidente = 0;
+        for(int i = 0; i < eleicao.totalPresidentes; i++){
+            //se i for diferente do indexPresidenteEleito, compara
+            if(i != indexPresidenteEleito){
+                //se os votos forem iguais, aumenta empate;
+                if( EhMesmoCandidato(eleicao.presidentes[indexPresidenteEleito], eleicao.presidentes[i]) ){
+                    empatePresidente++;
                 }
             }
         }
-    }
 
-    //Imprimindo presidente eleito
-    ImprimeCandidato(presidenteEleito, percentualVotosPresidente);
+        //se empate for maior que 0, teve empate;
+        if(empatePresidente > 0){
+            printf("EMPATE. SERA NECESSARIO UMA NOVA VOTACAO\n");
+        }else{
+            //calcula o percentual do governador eleito;
+            percentualVotosPresidente = CalculaPercentualVotos(eleicao.presidentes[indexPresidenteEleito], totalVotosGovernador);
 
-    // Procura governador eleito
-    tCandidato governadorEleito;
-    float percentualVotosGovernador = 0;
-    int maxVotosGovernador = -1;
-
-    printf("- GOVERNADOR ELEITO: ");
-    //procura index do governador eleito
-    for(int i = 0; i < eleicao.totalGovernadores; i++){
-        int votos = ObtemVotos(eleicao.governadores[i]);
-        if(votos > maxVotosGovernador){
-            maxVotosGovernador = votos;
-            governadorEleito = eleicao.governadores[i];
-            percentualVotosGovernador = CalculaPercentualVotos(eleicao.governadores[i], totalVotosGovernador);
+            //imprimindo governador eleito
+            ImprimeCandidato(eleicao.presidentes[indexPresidenteEleito], percentualVotosPresidente);
         }
     }
 
-    //Imprimindo governador eleito
-    ImprimeCandidato(governadorEleito, percentualVotosGovernador);
+    //Imprime o governador, caso não tenha empate ou indecisão.
+    printf("- GOVERNADOR ELEITO: ");
+
+    //se tiver menos votos validos do que invalidos, sem decisão.
+    if(votosValidosGovernador <= votosInvalidosGovernador){
+        printf("SEM DECISAO\n");
+    }else{
+        // Procura governador eleito
+        int indexGovernadorEleito;
+        float percentualVotosGovernador;
+        int maxVotosGovernador = -1;
+
+        //procura index do governador eleito
+        for(int i = 0; i < eleicao.totalGovernadores; i++){
+            //obtem os votos do governador em questão;
+            int votos = ObtemVotos(eleicao.governadores[i]);
+
+            //se os votos do governador forem maiores do que o maior, o eleito é atualizado e calculado;
+            if(votos > maxVotosGovernador){
+                maxVotosGovernador = votos;
+                indexGovernadorEleito = i;
+            }
+        }
+
+        //procura empate entre governadores;
+        int empateGovernador = 0;
+        for(int i = 0; i < eleicao.totalGovernadores; i++){
+            //se i for diferente do indexPresidenteEleito, compara
+            if(i != indexGovernadorEleito){
+                //se os votos forem iguais, aumenta empate;
+                if( EhMesmoCandidato(eleicao.governadores[indexGovernadorEleito], eleicao.governadores[i]) ){
+                    empateGovernador++;
+                }
+            }
+        }
+
+        if(empateGovernador > 0){
+            printf("EMPATE. SERA NECESSARIO UMA NOVA VOTACAO\n");
+        }else{
+            //calcula o percentual do governador eleito;
+            percentualVotosGovernador = CalculaPercentualVotos(eleicao.governadores[indexGovernadorEleito], totalVotosGovernador);
+
+            //imprimindo governador eleito
+            ImprimeCandidato(eleicao.governadores[indexGovernadorEleito], percentualVotosGovernador);
+        }
+    }
 
     printf("- NULOS E BRANCOS: %d, %d", votosNulos, votosBrancos);
-}
-
-//teste
-void ImprimeEleicao(tEleicao eleicao){
-    //imprime governadores
-    for(int i = 0; i < eleicao.totalGovernadores; i++){
-        ImprimeCandidatoTeste(eleicao.governadores[i]);
-    }
-
-    //imprime presidentes
-    for(int i = 0; i < eleicao.totalPresidentes; i++){
-        ImprimeCandidatoTeste(eleicao.presidentes[i]);
-    }
-
-    //imprime eleitores
-    for(int i = 0; i < eleicao.totalEleitores; i++){
-        ImprimeEleitor(eleicao.eleitores[i]);
-    }
 }

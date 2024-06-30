@@ -77,7 +77,4 @@ float CalculaPercentualVotos(tCandidato candidato, int totalVotos);
  */
 void ImprimeCandidato (tCandidato candidato, float percentualVotos);
 
-//teste
-void ImprimeCandidatoTeste (tCandidato candidato);
-
 #endif

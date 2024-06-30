@@ -47,7 +47,4 @@ tEleicao RealizaEleicao(tEleicao eleicao); //já foi
  */
 void ImprimeResultadoEleicao(tEleicao eleicao);
 
-//teste
-void ImprimeEleicao(tEleicao eleicao);
-
 #endif

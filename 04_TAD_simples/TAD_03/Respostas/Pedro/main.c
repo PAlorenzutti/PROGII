@@ -19,6 +19,7 @@ int main(){
         }
 
         if(!strcmp(opcao, "Estoque")){
+            consultarEstoqueLocadora(locadora);
         }
 
         if(!strcmp(opcao, "Alugar")){

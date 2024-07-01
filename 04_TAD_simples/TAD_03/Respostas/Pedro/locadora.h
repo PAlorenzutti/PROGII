@@ -84,7 +84,7 @@ tLocadora ordenarFilmesLocadora (tLocadora locadora);
  * @brief Imprime o estoque da locadora.
  * @param locadora Locadora a ser consultada.
  */
-void consultarEstoqueLocadora (tLocadora locadora);
+void consultarEstoqueLocadora (tLocadora locadora); //já foi
 
 /**
  * @brief Imprime o lucro da locadora.

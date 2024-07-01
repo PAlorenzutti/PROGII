@@ -19,27 +19,27 @@ typedef struct Filme {
  * @param quantidade Quantidade em estoque do filme.
  * @return Filme criado.
  */
-tFilme criarFilme (char* nome, int codigo, int valor, int quantidade);
+tFilme criarFilme (char* nome, int codigo, int valor, int quantidade); //já foi
 
 /**
  * @brief Lê um filme.
  * @param codigo Código do filme.
  * @return Filme lido.
 */
-tFilme leFilme(int codigo);
+tFilme leFilme(int codigo); //já foi
 
 /**
  * @brief Obtém o código de um filme.
  * @param filme Filme a ser consultado.
  * @return Código do filme.
  */
-int obterCodigoFilme (tFilme filme);
+int obterCodigoFilme (tFilme filme); //já foi
 
 /**
  * @brief Imprime o nome de um filme.
  * @param filme Filme a ser impresso.
  */
-void imprimirNomeFilme (tFilme filme);
+void imprimirNomeFilme (tFilme filme); //já foi
 
 /**
  * @brief Obtém o valor de um filme.
@@ -53,7 +53,7 @@ int obterValorFilme (tFilme filme);
  * @param filme Filme a ser consultado.
  * @return Quantidade em estoque do filme.
  */
-int obterQtdEstoqueFilme (tFilme filme);
+int obterQtdEstoqueFilme (tFilme filme); //já foi
 
 /**
  * @brief Obtém a quantidade alugada de um filme.

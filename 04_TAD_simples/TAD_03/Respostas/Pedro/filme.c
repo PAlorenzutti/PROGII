@@ -21,7 +21,7 @@ tFilme leFilme(int codigo){
     char nome[MAX_CARACTERES];
     int valor, quantidade;
 
-    scanf("%19[^,],%d,%d", nome, valor, quantidade);
+    scanf("%19[^,],%d,%d\n", nome, &valor, &quantidade);
 
     filme = criarFilme(nome, codigo, valor, quantidade);
 
@@ -30,4 +30,12 @@ tFilme leFilme(int codigo){
 
 int obterCodigoFilme (tFilme filme){
     return filme.codigo;
+}
+
+void imprimirNomeFilme (tFilme filme){
+    printf("%s", filme.nome);
+}
+
+int obterQtdEstoqueFilme (tFilme filme){
+    return filme.qtdEstoque;
 }

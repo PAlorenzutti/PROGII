@@ -6,26 +6,27 @@
 #include "filme.h"
 
 int main(){
-    
+    //cria locadora
+    tLocadora locadora = criarLocadora();
+
     //lê a primeira opcao;
     char opcao[50];
     scanf("%[^\n]%*c", opcao);
 
     while(strcmp(opcao, "#") != 0){    
         if(!strcmp(opcao, "Cadastrar")){
-            printf("entrou Cadastrar");
+            locadora = lerCadastroLocadora(locadora);
         }
 
         if(!strcmp(opcao, "Estoque")){
-            printf("entrou Estoque");
         }
 
         if(!strcmp(opcao, "Alugar")){
-            printf("entrou Alugar");
+
         }
 
         if(!strcmp(opcao, "Devolver")){
-            printf("entrou Devolver");
+
         }
 
         scanf("%[^\n]%*c", opcao);

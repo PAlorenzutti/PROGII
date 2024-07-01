@@ -16,7 +16,7 @@ typedef struct Locadora {
  * @brief Cria uma nova locadora.
  * @return Locadora criada.
  */
-tLocadora criarLocadora ();
+tLocadora criarLocadora (); //já foi
 
 /**
  * @brief Verifica se um filme está cadastrado na locadora.
@@ -24,7 +24,7 @@ tLocadora criarLocadora ();
  * @param codigo Código do filme a ser verificado.
  * @return 1 se o filme está cadastrado, 0 caso contrário.
  */
-int verificarFilmeCadastrado (tLocadora locadora, int codigo);
+int verificarFilmeCadastrado (tLocadora locadora, int codigo); //já foi
 
 /**
  * @brief Cadastra um filme na locadora, desde que ele não esteja cadastrado.
@@ -32,14 +32,14 @@ int verificarFilmeCadastrado (tLocadora locadora, int codigo);
  * @param filme Filme a ser cadastrado.
  * @return Locadora atualizada.
 */
-tLocadora cadastrarFilmeLocadora (tLocadora locadora, tFilme filme);
+tLocadora cadastrarFilmeLocadora (tLocadora locadora, tFilme filme); //já foi
 
 /**
  * @brief Lê o cadastro de um ou mais filmes a partir da entrada padrão e o cadastra na locadora.
  * @param locadora Locadora a ser atualizada.
  * @return Locadora atualizada.
  */
-tLocadora lerCadastroLocadora (tLocadora locadora);
+tLocadora lerCadastroLocadora (tLocadora locadora); //já foi
 
 /**
  * @brief Aluga um conjunto de filmes da locadora.

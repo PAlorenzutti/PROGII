@@ -90,6 +90,6 @@ tFilme devolverFilme (tFilme filme);
  * @param filme2 Segundo filme a ser comparado.
  * @return 0 se os nomes são iguais, um valor negativo se o nome do primeiro filme é menor que o do segundo, um valor positivo caso contrário.
  */
-int compararNomesFilmes (tFilme filme1, tFilme filme2);
+int compararNomesFilmes (tFilme filme1, tFilme filme2); //já foi
 
 #endif

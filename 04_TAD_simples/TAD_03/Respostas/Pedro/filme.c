@@ -39,3 +39,7 @@ void imprimirNomeFilme (tFilme filme){
 int obterQtdEstoqueFilme (tFilme filme){
     return filme.qtdEstoque;
 }
+
+int compararNomesFilmes (tFilme filme1, tFilme filme2){
+    return strcmp(filme1.nome, filme2.nome);
+}

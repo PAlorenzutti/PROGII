@@ -10,7 +10,7 @@ int main(){
     tLocadora locadora = criarLocadora();
 
     //lê a primeira opcao;
-    char opcao[50];
+    char opcao[20];
     scanf("%[^\n]%*c", opcao);
 
     while(strcmp(opcao, "#") != 0){    

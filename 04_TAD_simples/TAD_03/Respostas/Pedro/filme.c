@@ -36,8 +36,27 @@ void imprimirNomeFilme (tFilme filme){
     printf("%s", filme.nome);
 }
 
+int obterValorFilme (tFilme filme){
+    return filme.valor;
+}
+
 int obterQtdEstoqueFilme (tFilme filme){
     return filme.qtdEstoque;
+}
+
+int ehMesmoCodigoFilme (tFilme filme, int codigo){
+    if(filme.codigo == codigo){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+tFilme alugarFilme (tFilme filme){
+    filme.qtdEstoque--;
+    filme.qtdAlugada++;
+
+    return filme;
 }
 
 int compararNomesFilmes (tFilme filme1, tFilme filme2){

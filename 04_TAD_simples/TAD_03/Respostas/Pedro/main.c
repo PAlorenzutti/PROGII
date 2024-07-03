@@ -23,7 +23,7 @@ int main(){
         }
 
         if(!strcmp(opcao, "Alugar")){
-
+            locadora = lerAluguelLocadora(locadora);
         }
 
         if(!strcmp(opcao, "Devolver")){

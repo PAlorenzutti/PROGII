@@ -20,6 +20,7 @@ int main(){
 
         if(!strcmp(opcao, "Estoque")){
             consultarEstoqueLocadora(locadora);
+            scanf("%[^\n]%*c", opcao);
         }
 
         if(!strcmp(opcao, "Alugar")){

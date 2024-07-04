@@ -103,6 +103,8 @@ tLocadora alugarFilmesLocadora (tLocadora locadora, int* codigos, int quantidade
 
                 //aluga filme;
                 locadora.filme[i] = alugarFilme(locadora.filme[i]);
+
+                break;
             }
         }
     }
@@ -156,4 +158,6 @@ void consultarEstoqueLocadora (tLocadora locadora){
         //imprime quantidade no estoque;
         printf(" Fitas em estoque: %d\n", obterQtdEstoqueFilme(locadora.filme[i]));
     }
+
+
 }

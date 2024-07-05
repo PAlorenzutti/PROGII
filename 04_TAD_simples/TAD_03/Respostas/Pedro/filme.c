@@ -33,7 +33,7 @@ int obterCodigoFilme (tFilme filme){
 }
 
 void imprimirNomeFilme (tFilme filme){
-    printf("%s", filme.nome);
+    printf("%d - %s", filme.codigo, filme.nome);
 }
 
 int obterValorFilme (tFilme filme){
@@ -55,6 +55,13 @@ int ehMesmoCodigoFilme (tFilme filme, int codigo){
 tFilme alugarFilme (tFilme filme){
     filme.qtdEstoque--;
     filme.qtdAlugada++;
+
+    return filme;
+}
+
+tFilme devolverFilme (tFilme filme){
+    filme.qtdAlugada--;
+    filme.qtdEstoque++;
 
     return filme;
 }

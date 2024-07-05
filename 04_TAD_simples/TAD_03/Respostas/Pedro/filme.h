@@ -46,7 +46,7 @@ void imprimirNomeFilme (tFilme filme); //já foi
  * @param filme Filme a ser consultado.
  * @return Valor do filme.
  */
-int obterValorFilme (tFilme filme);
+int obterValorFilme (tFilme filme); //já foi
 
 /**
  * @brief Obtém a quantidade em estoque de um filme.
@@ -60,7 +60,7 @@ int obterQtdEstoqueFilme (tFilme filme); //já foi
  * @param filme Filme a ser consultado.
  * @return Quantidade alugada do filme.
  */
-int obterQtdAlugadaFilme (tFilme filme);
+int obterQtdAlugadaFilme (tFilme filme); //já foi
 
 /**
  * @brief Verifica se um filme possui um determinado código.
@@ -68,21 +68,21 @@ int obterQtdAlugadaFilme (tFilme filme);
  * @param codigo Código a ser verificado.
  * @return 1 se o filme possui o código, 0 caso contrário.
  */
-int ehMesmoCodigoFilme (tFilme filme, int codigo);
+int ehMesmoCodigoFilme (tFilme filme, int codigo); //já foi
 
 /**
  * @brief Aluga um filme.
  * @param filme Filme a ser alugado.
  * @return Filme com a quantidade alugada atualizada.
  */
-tFilme alugarFilme (tFilme filme);
+tFilme alugarFilme (tFilme filme); //já foi
 
 /**
  * @brief Devolve um filme.
  * @param filme Filme a ser devolvido.
  * @return Filme com a quantidade alugada atualizada.
  */
-tFilme devolverFilme (tFilme filme);
+tFilme devolverFilme (tFilme filme); //já foi
 
 /**
  * @brief Compara os nomes de dois filmes.

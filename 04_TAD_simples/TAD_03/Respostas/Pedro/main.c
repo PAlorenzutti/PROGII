@@ -13,7 +13,11 @@ int main(){
     char opcao[20];
     scanf("%[^\n]%*c", opcao);
 
-    while(strcmp(opcao, "#") != 0){    
+    //sentinelas para operações
+    int i = 0; //alugar
+    int j = 0; //devolver;
+
+    while(true){    
         if(!strcmp(opcao, "Cadastrar")){
             locadora = lerCadastroLocadora(locadora);
         }
@@ -25,12 +29,26 @@ int main(){
 
         if(!strcmp(opcao, "Alugar")){
             locadora = lerAluguelLocadora(locadora);
+            i = 1;
         }
 
         if(!strcmp(opcao, "Devolver")){
-
+            locadora = lerDevolucaoLocadora(locadora);
+            j = 1;
         }
 
         scanf("%[^\n]%*c", opcao);
+
+        if(strcmp(opcao, "#") == 0){
+            break;
+        }
+
+        printf("\n");
     }
+
+    if(i == 1 && j == 1){
+        consultarLucroLocadora(locadora);
+    }
+
+    return 0;
 }

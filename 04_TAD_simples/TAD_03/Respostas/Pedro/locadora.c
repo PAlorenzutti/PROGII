@@ -41,29 +41,28 @@ tLocadora cadastrarFilmeLocadora (tLocadora locadora, tFilme filme){
 tLocadora lerCadastroLocadora (tLocadora locadora){
     char linha[100];
     while (true) {
-        // Lê a entrada
-        if (!fgets(linha, sizeof(linha), stdin)) {
-            break;
-        }
+        //lê a linha toda de entrada;
+        fgets(linha, sizeof(linha), stdin);
 
-        // Verifica se a entrada é '#'
+        //verifica se o primeiro elemento da linha não é o #
         if (linha[0] == '#') {
             break;
         }
 
-        // Variáveis para armazenar os valores lidos
+        //variáveis para armazenar os valores lidos
         int codigo, valor, quantidade;
         char nome[MAX_CARACTERES];
 
-        // Lê os valores da linha
-        if (sscanf(linha, "%d,%49[^,],%d,%d", &codigo, nome, &valor, &quantidade) == 4) {
-            // Verifica se o código não está cadastrado
-            if (!verificarFilmeCadastrado(locadora, codigo)) {
-                // Cria filme e cadastra
-                tFilme filme = criarFilme(nome, codigo, valor, quantidade);
-                locadora = cadastrarFilmeLocadora(locadora, filme);
-            }
+        //lê os valores da linha
+        sscanf(linha, "%d,%49[^,],%d,%d", &codigo, nome, &valor, &quantidade);
+        
+        //verifica se o código não está cadastrado
+        if (!verificarFilmeCadastrado(locadora, codigo)) {
+            //cria filme e cadastra
+            tFilme filme = criarFilme(nome, codigo, valor, quantidade);
+            locadora = cadastrarFilmeLocadora(locadora, filme);
         }
+    
     }
 
     return locadora;
@@ -109,7 +108,9 @@ tLocadora alugarFilmesLocadora (tLocadora locadora, int* codigos, int quantidade
         }
     }
 
-    printf("\nTotal de filmes alugados: %d com custo de R$%d\n", totalAlugados, custoTotal);
+    printf("Total de filmes alugados: %d com custo de R$%d\n", totalAlugados, custoTotal);
+
+    locadora.lucro += custoTotal;
 
     return locadora;
 }
@@ -129,12 +130,13 @@ tLocadora lerAluguelLocadora (tLocadora locadora){
             break;
         }
 
-        // Tenta ler um código de filme da linha
+        //lê código da linha
         int codigo;
-        if (sscanf(linha, "%d", &codigo) == 1) {
-            codigos[quantidadeCodigos] = codigo;
-            quantidadeCodigos++;
-        }
+        sscanf(linha, "%d", &codigo);
+
+        //adiciona código no vetor de códigos;
+        codigos[quantidadeCodigos] = codigo;
+        quantidadeCodigos++;
     }
 
     locadora = alugarFilmesLocadora(locadora, codigos, quantidadeCodigos);
@@ -142,22 +144,79 @@ tLocadora lerAluguelLocadora (tLocadora locadora){
     return locadora;
 }
 
+tLocadora devolverFilmesLocadora (tLocadora locadora, int* codigos, int quantidadeCodigos){
+    //percorre os filmes
+    for(int i = 0; i < locadora.numFilmes; i++){
+        //percorre os códigos
+        for(int j = 0; j < quantidadeCodigos; j++){
+            //se for o mesmo id do filme
+            if(ehMesmoCodigoFilme(locadora.filme[i], codigos[j])){
+
+                //aluga filme;
+                locadora.filme[i] = devolverFilme(locadora.filme[i]);
+
+                //filme
+                printf("Filme ");
+
+                //imprime o nome do filme;
+                imprimirNomeFilme(locadora.filme[i]);
+
+                //devolvido!
+                printf(" Devolvido!\n");
+
+                break;
+            }
+        }
+    }
+
+    return locadora;
+}
+
+
+tLocadora lerDevolucaoLocadora (tLocadora locadora){
+    int codigos[MAX_FILMES];
+    int quantidadeCodigos = 0;
+
+    while(true){
+        char linha[100];
+        //lê a linha de entrada
+        fgets(linha, sizeof(linha), stdin);
+
+        //verifica se a linha contém '#'
+        if (linha[0] == '#') {
+            break;
+        }
+
+        //lê código da linha
+        int codigo;
+        sscanf(linha, "%d", &codigo);
+
+        //adiciona código no vetor de códigos;
+        codigos[quantidadeCodigos] = codigo;
+        quantidadeCodigos++;
+    }
+
+    locadora = devolverFilmesLocadora(locadora, codigos, quantidadeCodigos);
+
+    return locadora;
+}
+
+
 void consultarEstoqueLocadora (tLocadora locadora){
     //ordena locadora;
     locadora = ordenarFilmesLocadora(locadora);
     
-    printf("\n~ESTOQUE~\n");
+    printf("~ESTOQUE~\n");
 
     for(int i = 0; i < locadora.numFilmes; i++){
-        //imprime o código do filme;
-        printf("%d - ", obterCodigoFilme(locadora.filme[i]));
-
         //imprime o nome do filme;
         imprimirNomeFilme(locadora.filme[i]);
 
         //imprime quantidade no estoque;
         printf(" Fitas em estoque: %d\n", obterQtdEstoqueFilme(locadora.filme[i]));
     }
+}
 
-
+void consultarLucroLocadora (tLocadora locadora){
+    printf("\nLucro total R$%d\n", locadora.lucro);
 }

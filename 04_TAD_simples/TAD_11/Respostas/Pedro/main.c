@@ -57,7 +57,7 @@ int main(){
             char nome[50];
             float valor;
 
-            scanf("%d %s %f\n", indexLoja, nome, valor);
+            scanf("%d %s %f\n", &indexLoja, nome, &valor);
 
             lojas[indexLoja] = RegistraVenda(lojas[indexLoja], nome, valor);
         }

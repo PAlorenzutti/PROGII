@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "loja.h"
 
 tLoja AbreLoja(int id, float aluguel){
@@ -6,19 +8,18 @@ tLoja AbreLoja(int id, float aluguel){
     loja.id = id;
     loja.aluguel = aluguel;
     loja.totalVendedores = 0;
-    loja.lucro = 0 - aluguel;
+    loja.lucro = 0;
 
     return loja;
 }
 
-/**
- * @brief Verifica se o ID de uma loja é igual a outro.
- * 
- * @param loja Estrutura do tipo tLoja contendo os dados da loja a ser verificada.
- * @param id ID da loja a ser comparado.
- * @return int Retorna 1 se o ID da loja é igual ao ID passado como parâmetro, ou 0 caso contrário.
- */
-int VerificaIdLoja(tLoja loja, int id);
+int VerificaIdLoja(tLoja loja, int id){
+    if(loja.id == id){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 
 tLoja ContrataVendedor(tLoja loja, tVendedor vendedor){
     loja.vendedores[loja.totalVendedores] = vendedor;
@@ -36,9 +37,6 @@ tLoja ContrataVendedor(tLoja loja, tVendedor vendedor){
  * @return tLoja Retorna a estrutura do tipo tLoja atualizada com a venda registrada.
  */
 tLoja RegistraVenda(tLoja loja, char nome[50], float valor){
-    //no que concerne a loja
-    loja.lucro += valor;
-
     //no que concerne ao vendedor
     for(int i = 0; i < loja.totalVendedores; i++){
         //se for igual, retorna 1 e entra
@@ -50,17 +48,34 @@ tLoja RegistraVenda(tLoja loja, char nome[50], float valor){
     return loja;
 }
 
-/**
- * @brief Calcula o lucro da loja.
- * 
- * @param loja Estrutura do tipo tLoja contendo os dados da loja.
- * @return tLoja Retorna a estrutura do tipo tLoja atualizada com o lucro calculado.
- */
-tLoja CalculaLucro(tLoja loja);
+tLoja CalculaLucro(tLoja loja){
+    float totalVendido = 0;
+    float totalSalarios = 0;
+    float totalComissoes = 0;
+    
+    
+    for(int i = 0; i < loja.totalVendedores; i++){
+        totalVendido += GetTotalVendido(loja.vendedores[i]);
+        totalSalarios += GetSalario(loja.vendedores[i]);
+        totalComissoes += GetComissao(loja.vendedores[i]);
+    }
+
+    loja.lucro = totalVendido - totalSalarios - totalComissoes - loja.aluguel;
+
+    return loja;
+}
 
 /**
  * @brief Imprime o relatório da loja.
  * 
  * @param loja Estrutura do tipo tLoja contendo os dados da loja.
  */
-void ImprimeRelatorioLoja(tLoja loja);
+void ImprimeRelatorioLoja(tLoja loja){
+    //imprime informações da loja em si
+    printf("Loja %d: Lucro total: R$ %.2f\n", loja.id, loja.lucro);
+
+    //imprime informações dos vendedores da loja;
+    for(int i = 0; i < loja.totalVendedores; i++){
+        ImprimeRelatorioVendedor(loja.vendedores[i]);
+    }
+}

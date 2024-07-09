@@ -7,7 +7,7 @@
 int main(){
     //pega o número de lojas a serem cadastradas
     int numLojas;
-    scanf("%d\n", &numLojas);
+    scanf("%d", &numLojas);
 
     //cria o vetor lojas e o index para cada loja;
     tLoja lojas[numLojas];
@@ -15,7 +15,7 @@ int main(){
 
     while(true){
         int opcao;
-        scanf("%d\n", &opcao);
+        scanf("%d", &opcao);
 
         //sair do programa
         if(opcao == 0){
@@ -48,7 +48,7 @@ int main(){
             int indexLoja;
             scanf("%d\n", &indexLoja);
 
-            lojas[indexLoja] = ContrataVendedor(lojas[indexLoja], vendedor);
+            lojas[indexLoja - 1] = ContrataVendedor(lojas[indexLoja - 1], vendedor);
         }
 
         //registrar venda
@@ -59,12 +59,17 @@ int main(){
 
             scanf("%d %s %f\n", &indexLoja, nome, &valor);
 
-            lojas[indexLoja] = RegistraVenda(lojas[indexLoja], nome, valor);
+            lojas[indexLoja - 1] = RegistraVenda(lojas[indexLoja - 1], nome, valor);
         }
 
-        //relatório geral
         if(opcao == 4){
+            for(int i = 0; i < numLojas; i++){
+                //antes de printar calcula lucro loja
+                lojas[i] = CalculaLucro(lojas[i]);
 
+                //printa a loja com seu lucro;
+                ImprimeRelatorioLoja(lojas[i]);
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 
 #include "vendedor.h"
@@ -27,41 +28,23 @@ tVendedor ContabilizaVenda(tVendedor vendedor, float valor){
     return vendedor;
 }
 
-/**
- * @brief Obtém o salário de um vendedor.
- * 
- * @param vendedor Estrutura do tipo tVendedor contendo os dados do vendedor.
- * @return float Retorna o salário do vendedor.
- */
-float GetSalario(tVendedor vendedor);
+float GetSalario(tVendedor vendedor){
+    return vendedor.salario;
+}
 
-/**
- * @brief Obtém a comissão de um vendedor.
- * 
- * @param vendedor Estrutura do tipo tVendedor contendo os dados do vendedor.
- * @return float Retorna a comissão do vendedor.
- */
-float GetComissao(tVendedor vendedor);
+float GetComissao(tVendedor vendedor){
+    return vendedor.valor_vendido * vendedor.prct_comissao;
+}
 
-/**
- * @brief Obtém o total vendido por um vendedor.
- * 
- * @param vendedor Estrutura do tipo tVendedor contendo os dados do vendedor.
- * @return float Retorna o total vendido pelo vendedor.
- */
-float GetTotalVendido(tVendedor vendedor);
+float GetTotalVendido(tVendedor vendedor){
+    return vendedor.valor_vendido;
+}
 
-/**
- * @brief Obtém o total recebido por um vendedor.
- * 
- * @param vendedor Estrutura do tipo tVendedor contendo os dados do vendedor.
- * @return float Retorna o total recebido pelo vendedor (salário + comissão).
- */
-float GetTotalRecebido(tVendedor vendedor);
+float GetTotalRecebido(tVendedor vendedor){
+    return vendedor.salario + GetComissao(vendedor);
+}
 
-/**
- * @brief Imprime o relatório de um vendedor.
- * 
- * @param vendedor Estrutura do tipo tVendedor contendo os dados do vendedor.
- */
-void ImprimeRelatorioVendedor(tVendedor vendedor);
+void ImprimeRelatorioVendedor(tVendedor vendedor){
+    printf("	%s > Total vendido: R$%.2f\n", vendedor.nome, vendedor.valor_vendido);
+    printf("		Total recebido: R$%.2f\n", GetTotalRecebido(vendedor));
+}

@@ -11,7 +11,7 @@ int main(){
 
     //lê a primeira opcao;
     char opcao[20];
-    scanf("%[^\n]%*c", opcao);
+    scanf("%[^\n]\n", opcao);
 
     //sentinelas para operações
     int i = 0; //alugar
@@ -24,7 +24,7 @@ int main(){
 
         if(!strcmp(opcao, "Estoque")){
             consultarEstoqueLocadora(locadora);
-            scanf("%[^\n]%*c", opcao);
+            scanf("%[^\n]\n", opcao);
         }
 
         if(!strcmp(opcao, "Alugar")){
@@ -37,7 +37,7 @@ int main(){
             j = 1;
         }
 
-        scanf("%[^\n]%*c", opcao);
+        scanf("%[^\n]\n", opcao);
 
         if(strcmp(opcao, "#") == 0){
             break;

@@ -44,6 +44,10 @@ int obterQtdEstoqueFilme (tFilme filme){
     return filme.qtdEstoque;
 }
 
+int obterQtdAlugadaFilme (tFilme filme){
+    return filme.qtdAlugada;
+}
+
 int ehMesmoCodigoFilme (tFilme filme, int codigo){
     if(filme.codigo == codigo){
         return 1;

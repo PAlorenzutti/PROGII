@@ -14,18 +14,16 @@ int show_menu(){
     printf("6 - Encerrar o programa\n");
     printf("Opcao escolhida: \n");
 
-    scanf("%d", &option);
+    scanf("%d\n", &option);
 
     return option;
 }
 
 int main(){
     //lendo a primeira matriz
-
     tMatrix matrix1 = MatrixRead(matrix1);
 
     //lendo a segunda matriz
-
     tMatrix matrix2 = MatrixRead(matrix2);
 
     while(1){
@@ -33,6 +31,7 @@ int main(){
         
         option = show_menu();
 
+        //soma de matrizes
         if(option == 1){
             if(PossibleMatrixSum(matrix1, matrix2)){
                 tMatrix result;
@@ -41,7 +40,10 @@ int main(){
             }else{
                 printf("Erro: as dimensoes da matriz nao correspondem\n");
             }
-        }else if(option == 2){
+        }
+    
+        //subtração de matrizes
+        if(option == 2){
             if(PossibleMatrixSub(matrix1, matrix2)){
                 tMatrix result;
                 result = MatrixSub(matrix1, matrix2);
@@ -49,7 +51,10 @@ int main(){
             }else{
                 printf("Erro: as dimensoes da matriz nao correspondem\n");
             }
-        }else if(option == 3){
+        }
+        
+        //multiplicação de matrizes
+        if(option == 3){
             if(PossibleMatrixMultiply(matrix1, matrix2)){
                 tMatrix result;
                 result = MatrixMultiply(matrix1, matrix2);
@@ -57,44 +62,45 @@ int main(){
             }else{
                 printf("Erro: o numero de colunas da primeira matriz eh diferente do numero de linhas da segunda matriz\n");
             }
-        }else if(option == 4){
+        }
+        
+        //multiplicação por escalar
+        if(option == 4){
             int scalar;
-            //printf("Digite o escalar que deseja: ");
             scanf("%d", &scalar);
 
             int whichMatrix;
-            //printf("Digite qual matriz voce deseja multiplicar por %d: ", scalar);
             scanf("%d", &whichMatrix);
 
             if(whichMatrix == 1){
-                //int result[rows1][cols1];
-                scalar_multiply(rows1, cols1, matrix1, scalar);
-                matrix_print(rows1, cols1, matrix1);
+                matrix1 = MatrixMultiplyByScalar(matrix1, scalar);
+                MatrixPrint(matrix1);
             }
 
             if(whichMatrix == 2){
-                //int result[rows2][cols2];
-                scalar_multiply(rows2, cols2, matrix2, scalar);
-                matrix_print(rows2, cols2, matrix2);
+                matrix2 = MatrixMultiplyByScalar(matrix2, scalar);
+                MatrixPrint(matrix2);
             }
-        }else if(option == 5){
-            //printf("Digite qual matriz voce deseja transpor: ");
-            //scanf("%d", &whichMatrix);
+        }
+        
+        //transposta de matrizes
+        if(option == 5){
+            tMatrix result;
 
-            //fazendo a transposta da primeira matriz           
-            int result1[cols1][rows1];
-            transpose_matrix(rows1, cols1, matrix1, result1);
-            matrix_print(cols1, rows1, result1);
+            //transposta da primeira matriz           
+            result = TransposeMatrix(matrix1);
+            MatrixPrint(result);
             
             printf("\n");
 
-            int result2[cols2][rows2];
-            transpose_matrix(rows2, cols2, matrix2, result2);
-            matrix_print(cols2, rows2, result2);
-        }else if(option == 6){
+            //transposta da segunda matriz;
+            result = TransposeMatrix(matrix2);
+            MatrixPrint(result);
+        }
+        
+        //encerra o programa
+        if(option == 6){
             break;
-        }else{
-            printf("Opcao invalida.");
         }
         
         printf("\n");

@@ -91,7 +91,7 @@ tMatrix MatrixSub(tMatrix matrix1, tMatrix matrix2){
 }
 
 tMatrix MatrixMultiply(tMatrix matrix1, tMatrix matrix2){
-    tMatrix result = MatrixCreate(matrix1.rows, matrix1.cols);
+    tMatrix result = MatrixCreate(matrix1.rows, matrix2.cols);
 
     for(int i = 0; i < matrix1.rows; i++){
         for(int j = 0; j < matrix2.cols; j++){
@@ -115,7 +115,7 @@ tMatrix TransposeMatrix(tMatrix matrix){
         }
     }
 
-    return matrix;
+    return result;
 }
 
 tMatrix MatrixMultiplyByScalar(tMatrix matrix, int scalar){

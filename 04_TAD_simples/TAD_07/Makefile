@@ -1,13 +1,13 @@
 all: geraos geraA main clean
 
-geraos: Respostas/Pedro/main.c Respostas/Pedro/vetor.c
-	gcc -c Respostas/Pedro/main.c Respostas/Pedro/vetor.c
+geraos: Respostas/Pedro/main.c Respostas/Pedro/data.c
+	gcc -c Respostas/Pedro/main.c Respostas/Pedro/data.c
 
-geraA: vetor.o
-	ar rcs libvetor.a vetor.o
+geraA: data.o
+	ar rcs libdata.a data.o
 
 main: main.o
-	gcc main.o -o main -L. -lvetor
+	gcc main.o -o main -L. -ldata
 
 clean:
 	rm -rf *.o 
@@ -31,13 +31,18 @@ diff4:
 	./main <Casos/4/entrada.txt >saida.txt
 	diff saida.txt Casos/4/saida/saida.txt
 
+diff5:
+	./main <Casos/5/entrada.txt >saida.txt
+	diff saida.txt Casos/5/saida/saida.txt
+
+diff6:
+	./main <Casos/6/entrada.txt >saida.txt
+	diff saida.txt Casos/6/saida/saida.txt
+
 diffAll:
 	make diff1
 	make diff2
 	make diff3
 	make diff4
-
-correcao: Respostas/Pedro/main.c Respostas/Pedro/vetor.c
-	mkdir -p Gabarito-obj
-	gcc -c Respostas/Pedro/main.c -o Gabarito-obj/main.o
-	gcc -c Respostas/Pedro/vetor.c -o Gabarito-obj/vetor.o
+	make diff5
+	make diff6

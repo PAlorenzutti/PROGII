@@ -17,6 +17,7 @@ int main(){
 
     distRaio = alvo.r + tiro.r;
 
+    //se a distancia do ponto do tiro até o centro do alvo for maior do que a distancia do centro do alvo até a circunferencia
     distCentro = sqrt(pow(tiro.x - alvo.x, 2) + pow(tiro.y - alvo.y, 2));
 
     if(distCentro < distRaio){

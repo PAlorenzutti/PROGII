@@ -6,10 +6,16 @@
 typedef struct{
     int id;
     float X, Y;
-    float poder;
+    float poderAtaque;
 }tMissil;
 
 tMissil criaMissil();
+
+float getAbscMissil(tMissil m);
+
+float getOrdeMissil(tMissil m);
+
+tMissil atualizaMissil(tMissil m, float poderDefesa);
 
 void printaMissil(tMissil m);
 

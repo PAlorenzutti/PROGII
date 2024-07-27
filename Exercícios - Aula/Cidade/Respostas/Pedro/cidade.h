@@ -10,10 +10,15 @@ typedef struct{
     int qtdDefesas;
     tMissil misseis[MAX_MISSEIS];
     int qtdMisseis;
+    float efetividade;
 }tCidade;
 
 tCidade criaCidade();
 
-void printaCidade(tCidade cidade);
+int verificaAtingiuCidade(tCidade c, tMissil m);
+
+tCidade atualizaCidade(tCidade c);
+
+void printaCidade(tCidade c);
 
 #endif

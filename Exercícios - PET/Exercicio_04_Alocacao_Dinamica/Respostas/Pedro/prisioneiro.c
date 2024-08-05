@@ -20,7 +20,7 @@ void fogePrisioneiro(tPrisioneiro* prisioneiro){
 }
 
 int acabouPenaPrisioneiro(tPrisioneiro* prisioneiro){
-    if(prisioneiro->tempoPassado == prisioneiro->pena || prisioneiro->tempoPassado > prisioneiro->pena){
+    if(prisioneiro->tempoPassado >= prisioneiro->pena){
         return 1;
     }else{
         return 0;
@@ -39,4 +39,5 @@ void liberaPrisioneiroFimPrograma(tPrisioneiro* prisioneiro){
 
 void desalocaPrisioneiro(tPrisioneiro* prisioneiro){
     free(prisioneiro);
+    prisioneiro = NULL;
 }

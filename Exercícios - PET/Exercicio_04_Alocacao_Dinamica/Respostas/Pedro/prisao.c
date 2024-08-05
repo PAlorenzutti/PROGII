@@ -7,7 +7,7 @@ tPrisao* criaPrisao(char* nome, int nCelas, int capacidadeCelas){
     prisao->dia = 0;
     prisao->nCelas = nCelas;
     prisao->capacidadeCelas = capacidadeCelas;
-    prisao->celas = (tCela**) malloc(capacidadeCelas * sizeof(tCela**));
+    prisao->celas = (tCela**) malloc(capacidadeCelas * sizeof(tCela*));
 
     return prisao;
 }
@@ -20,7 +20,11 @@ void executaPrisao(tPrisao* prisao){
 
     scanf("%d %[^\n]\n", &pena, nome);
 
-    tPrisioneiro *p = criaPrisioneiro(nome, pena);
+    if(pena < 0){
+        printf("Valor invalido\n");
+    }else{
+        tPrisioneiro *p = criaPrisioneiro(nome, pena);
+    }
 }
 
 void imprimeDiaEMenuPrisao(tPrisao* prisao){
@@ -48,6 +52,14 @@ void registraFugaCelaPrisao(tPrisao* prisao){
 
     if(indexCela > 0 || indexCela < prisao->nCelas - 1){
         fogePrisioneirosCela(prisao->celas[indexCela]);
+
+        //move o ponteiro de ponteiros
+        for(int i = indexCela; i < prisao->nCelas - 1; i++){
+            prisao->celas[i] = prisao->celas[i + 1];
+        }
+
+        prisao->nCelas--;
+        
     }else{
         printf("Valor invalido\n");
     }

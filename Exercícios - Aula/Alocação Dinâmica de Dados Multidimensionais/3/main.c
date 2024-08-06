@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
 typedef struct{
     float *notas;
@@ -10,17 +11,42 @@ typedef struct{
     float desvio;
 }Turma;
 
+void mediaTurma(Turma *turma){
+    float soma = 0;
+    
+    for(int i = 0; i < turma->qtdNotas; i++){
+        soma += turma->notas[i];
+    }
+
+    turma->media = (float) soma / turma->qtdNotas;
+}
+
+void desvioTurma(Turma *turma){
+    float soma = 0;
+
+    for(int i = 0; i < turma->qtdNotas; i++){
+        soma += pow(turma->notas[i] - turma->media, 2);
+    }
+
+    turma->desvio = sqrt(soma / turma->qtdNotas);
+}
+
 void printNotas(float *notas, int qtdNotas){
     for(int i = 0; i < qtdNotas; i++){
         printf("%.2f ", notas[i]);
     }
-
-    printf("\n");
 }
 
 void printTurmas(Turma *turmas, int qtdTurmas){
     for(int i = 0; i < qtdTurmas; i++){
+        printf("Turma %d: ", i);
         printNotas(turmas[i].notas, turmas[i].qtdNotas);
+
+        mediaTurma(&turmas[i]);
+        printf(", Media: %.2f", turmas[i].media);
+
+        desvioTurma(&turmas[i]);
+        printf(", Desvio: %.2f\n", turmas[i].desvio);
     }
 }
 

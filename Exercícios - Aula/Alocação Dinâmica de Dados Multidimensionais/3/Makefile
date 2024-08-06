@@ -1,7 +1,7 @@
 all: compiler
 
 compiler:
-	gcc main.c -o main
+	gcc main.c -o main -lm
 
 teste:
 	./main <entrada.txt >saida.txt

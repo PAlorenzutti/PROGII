@@ -1,5 +1,5 @@
-#ifndef PRISIONEIRO_H_
-#define PRISIONEIRO_H_
+#ifndef TPRISIONEIRO_H_
+#define TPRISIONEIRO_H_
 
 #define MAXTAM_NOME 100
 
@@ -31,6 +31,9 @@ void passaTempoPrisioneiro(tPrisioneiro* prisioneiro);
 */
 void fogePrisioneiro(tPrisioneiro* prisioneiro);
 
+/**
+ * @brief Retorna valor diferente de zero caso a pena tenha acabado, e 0 caso contrario. 
+*/
 int acabouPenaPrisioneiro(tPrisioneiro* prisioneiro);
 
 /**
@@ -38,6 +41,9 @@ int acabouPenaPrisioneiro(tPrisioneiro* prisioneiro);
 */
 void liberaPrisioneiroCumpriuPena(tPrisioneiro* prisioneiro);
 
+/**
+ * @brief Imprime a liberação do prisioneiro ao fim do programa na tela e chama a função de desalocação 
+*/
 void liberaPrisioneiroFimPrograma(tPrisioneiro* prisioneiro);
 
 /**

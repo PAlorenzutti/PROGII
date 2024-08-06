@@ -1,5 +1,5 @@
-#ifndef CELA_H_
-#define CELA_H_
+#ifndef TCELA_H_
+#define TCELA_H_
 
 #include "prisioneiro.h"
 #include "stdlib.h"

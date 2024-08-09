@@ -12,11 +12,11 @@
 */
 int **CriaMatriz(int linhas, int colunas){
     //aloca primeiro um vetor para linhas
-    int **matriz = malloc(linhas * sizeof(int*));
+    int **matriz = (int**)malloc(linhas * sizeof(int*));
 
     //aloca um vetor de colunas para cada linha
     for(int i = 0; i < linhas; i++){
-        matriz[i] = malloc(linhas * sizeof(int));
+        matriz[i] = (int*)malloc(colunas * sizeof(int));
     }
 
     return matriz;
@@ -33,6 +33,8 @@ void LiberaMatriz(int **matriz, int linhas){
     for(int i = 0; i < linhas; i++){
         free(matriz[i]);
     }
+
+    free(matriz);
 }
 
 /**
@@ -58,9 +60,9 @@ void LeMatriz(int **matriz, int linhas, int colunas){
  * @param colunas Número de colunas da matriz.
 */
 void ImprimeMatrizTransposta(int **matriz, int linhas, int colunas){
-    for(int i = 0; i < linhas; i++){
-        for(int j = 0; j < colunas; j++){
-            printf("%d ", matriz[j][i]);
+    for(int j = 0; j < colunas; j++){
+        for(int i = 0; i < linhas; i++){
+            printf("%d ", matriz[i][j]);
         }
         printf("\n");
     }

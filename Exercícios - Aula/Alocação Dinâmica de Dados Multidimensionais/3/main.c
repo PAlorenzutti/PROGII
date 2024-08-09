@@ -11,6 +11,8 @@ typedef struct{
     float desvio;
 }Turma;
 
+//pra deixar mais limpo, seria melhor fazer um TAD colégio com ponteiro pra turma, qtdNotasColegio, media e desvio;
+
 void mediaTurma(Turma *turma){
     float soma = 0;
     
@@ -30,6 +32,30 @@ void desvioTurma(Turma *turma){
 
     turma->desvio = sqrt(soma / turma->qtdNotas);
 }
+
+float mediaTurmas(Turma *turmas, int qtdTurmas, int totalNotas){
+    float soma = 0;
+    
+    for(int i = 0; i < qtdTurmas; i++){
+        for(int j = 0; j < turmas[i].qtdNotas; j++){
+            soma += turmas[i].notas[j];
+        }
+    }
+
+    return (float) soma / totalNotas;
+}
+
+float desvioTurmas(Turma *turmas, int qtdTurmas, int totalNotas, float media){
+    float soma = 0;
+
+    for(int i = 0; i < qtdTurmas; i++){
+        for(int j = 0; j < turmas[i].qtdNotas; j++){
+            soma += pow(turmas[i].notas[j] - media, 2);
+        }
+    }
+
+    return (float) sqrt(soma / totalNotas);
+}   
 
 void printNotas(float *notas, int qtdNotas){
     for(int i = 0; i < qtdNotas; i++){
@@ -98,7 +124,20 @@ int main(){
 
         //incrementa a quantidade de turmas;
         qtdTurmas++;
+
+        //incrementa a quantidade de notas;
+        totalNotas += qtdNotas;
     }
 
     printTurmas(turmas, qtdTurmas);
+
+    //Média de todas as turmas juntas:
+    float media = mediaTurmas(turmas, qtdTurmas, totalNotas);
+    printf("Media das Turmas: %.2f\n", media);
+
+    //Desvio de todas as turmas juntas;
+    float desvio = desvioTurmas(turmas, qtdTurmas, totalNotas, media);
+    printf("Desvio Padrao das Turmas: %.2f\n", desvio);
+
+    return 0;
 }

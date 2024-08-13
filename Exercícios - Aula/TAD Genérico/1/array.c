@@ -39,7 +39,7 @@ void lerArray(Array *a){
     switch (a->tipo) {
         case INT:
             for (i = 0; i < a->tam; i++) {
-                scanf("%d", (int *)a->dado + i);
+                scanf("%d", &a->dado[i]);
             }
 
             break;
@@ -61,6 +61,7 @@ void lerArray(Array *a){
         case CHAR:
             for (i = 0; i < a->tam; i++) {
                 scanf("%c*", (char *)a->dado + i);
+                //scanf("%c*", (char *)&a->dado[i]);
             }
 
             break;

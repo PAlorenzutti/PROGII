@@ -30,7 +30,7 @@ tPacote* CriaPacote(Type type, int numElem){
     }
 
     if(pac->type == CHAR){
-        pac->data = malloc(pac->numElem * sizeof(char));
+        pac->data = malloc(pac->numElem + 1* sizeof(char));
     }
 
     return pac;
@@ -61,16 +61,12 @@ void LePacote(tPacote* pac){
     }
     
     if(pac->type == CHAR) {
-        for(int i = 0; i < pac->numElem; i++) {
-            char c;
-            scanf(" %c", &c);
+        getchar();
+        fgets(pac->data, pac->numElem + 1, stdin);
 
-            if(c == '\n'){
-                printf("entrou");
-                break;
-            }
-            
-            ((char*)pac->data)[i] = c;
+        size_t len = strlen((char*)pac->data);
+        if (len > 0 && ((char*)pac->data)[len - 1] == '\n') {
+            ((char*)pac->data)[len - 1] = '\0';
         }
     }
 
@@ -92,9 +88,7 @@ void ImprimePacote(tPacote* pac){
     }
 
     if(pac->type == CHAR){
-        for(int i = 0; i < pac->numElem; i++){
-            printf("%c", ((char*)pac->data)[i]);
-        }
+        printf("%s", pac->data);
     }
 
     printf("\n");

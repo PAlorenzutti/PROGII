@@ -23,6 +23,7 @@ tPacote* CriaPacote(Type type, int numElem){
 
     pac->numElem = numElem;
     pac->type = type;
+    pac->soma = 0;
     
     if(pac->type == INT){
         pac->data = malloc(pac->numElem * sizeof(int));
@@ -61,12 +62,19 @@ void LePacote(tPacote* pac){
     
     if(pac->type == CHAR) {
         for(int i = 0; i < pac->numElem; i++) {
-            scanf("%c", &((char*)pac->data)[i]); 
+            char c;
+            scanf(" %c", &c);
+
+            if(c == '\n'){
+                printf("entrou");
+                break;
+            }
+            
+            ((char*)pac->data)[i] = c;
         }
     }
 
-    
-        CalculaSomaVerificacaoPacote(pac);
+    CalculaSomaVerificacaoPacote(pac);
 }
 
 /**

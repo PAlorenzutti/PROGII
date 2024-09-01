@@ -14,17 +14,14 @@ typedef struct{
 }tPessoa;
 
 void setNome(tPessoa *p){
-    p->nome = (char*)malloc(sizeof(char) * TAM_NOME);
     scanf("%99[^\n]\n", p->nome);
 }
 
 void setData(tPessoa *p){
-    p->dataNascimento = (char*)malloc(sizeof(char) * TAM_DATA);
     scanf("%10s\n", p->dataNascimento);
 }
 
 void setCPF(tPessoa *p){
-    p->CPF = (char*)malloc(sizeof(char) * TAM_CPF);
     scanf("%14s\n", p->CPF);
 }
 
@@ -44,6 +41,14 @@ char* getCPF(tPessoa *p){
 tPessoa* criaPessoa(){
     tPessoa* p = (tPessoa*)malloc(sizeof(tPessoa));
 
+    p->nome = (char*)malloc(sizeof(char) * TAM_NOME);
+    p->dataNascimento = (char*)malloc(sizeof(char) * TAM_DATA);
+    p->CPF = (char*)malloc(sizeof(char) * TAM_CPF);
+
+    return p;
+}
+
+tPessoa* lePessoa(tPessoa *p){
     setNome(p);
     setData(p);
     setCPF(p);
@@ -51,15 +56,22 @@ tPessoa* criaPessoa(){
     return p;
 }
 
-tPessoa** lePessoas(tPessoa **pessoas, int *numPessoas){
-    scanf("%d\n", numPessoas);
-    
+tPessoa** criaPessoas(tPessoa **pessoas, int numPessoas){
     //aloca o número de pessoas;
-    pessoas = (tPessoa**)malloc(sizeof(tPessoa*) * (*numPessoas));
-    
-    //lê as informações de cada pessoa;
-    for(int i = 0; i < *numPessoas; i++){
+    pessoas = (tPessoa**)malloc(sizeof(tPessoa*) * (numPessoas));
+
+    //aloca cada pessoa do vetor;
+    for(int i = 0; i < numPessoas; i++){
         pessoas[i] = criaPessoa();
+    }
+
+    return pessoas;
+}
+
+tPessoa** lePessoas(tPessoa **pessoas, int numPessoas){
+    //lê as informações de cada pessoa;
+    for(int i = 0; i < numPessoas; i++){
+        pessoas[i] = lePessoa(pessoas[i]);
     }
     
     return pessoas;
@@ -93,36 +105,40 @@ void liberaPessoas(tPessoa **pessoas, int numPessoas){
 }
 
 void salvaArquivo(tPessoa **pessoas, int numPessoas){
-    FILE *arquivo;
+    FILE *arquivo = fopen("dados.bin", "wb");
 
-    arquivo = fopen("dados.bin", "wb");
-
-    //escreve o número de pessoas no arquivo;
     fwrite(&numPessoas, sizeof(int), 1, arquivo);
 
-    //escreve cada pessoa no arquivo;
-    fwrite(pessoas, sizeof(tPessoa**), 1, arquivo);
+    for(int i = 0; i < numPessoas; i++){
+        fwrite(pessoas[i]->nome, sizeof(char) * TAM_NOME, 1, arquivo);
+        fwrite(pessoas[i]->dataNascimento, sizeof(char) * TAM_DATA, 1, arquivo);
+        fwrite(pessoas[i]->CPF, sizeof(char) * TAM_CPF, 1, arquivo);
+    }
 
-    //fecha arquivo
     fclose(arquivo);
 }
 
-void leArquivo(tPessoa **pessoas, int *numPessoas){
-    FILE *arquivo;
+tPessoa** leArquivo(tPessoa **pessoas, int *numPessoas){
+    FILE *arquivo = fopen("dados.bin", "rb");
 
-    arquivo = fopen("dados.bin", "rb");
-
-    //escreve o número de pessoas no arquivo;
     fread(numPessoas, sizeof(int), 1, arquivo);
 
-    //aloca o número de pessoas;
-    pessoas = (tPessoa**)malloc(sizeof(tPessoa*) * (*numPessoas));
+    pessoas = criaPessoas(pessoas, *numPessoas);
 
-    //escreve cada pessoa no arquivo;
-    fread(pessoas, sizeof(tPessoa**), 1, arquivo);
+    for(int i = 0; i < *numPessoas; i++){
+        fread(pessoas[i]->nome, sizeof(char) * TAM_NOME, 1, arquivo);
+        
+        fread(pessoas[i]->dataNascimento, sizeof(char) * TAM_DATA, 1, arquivo);
+        
+        fread(pessoas[i]->CPF, sizeof(char) * TAM_CPF, 1, arquivo);
+       
+    }
 
-    //fecha arquivo
+    
+
     fclose(arquivo);
+
+    return pessoas;
 }
 
 int main(){
@@ -133,8 +149,14 @@ int main(){
     scanf("%d\n", &opcao);
 
     if(opcao == 1){
+        //lê o número de pessoas da entrada padrão
+        scanf("%d\n", &numPessoas);
+
+        //cria as pessoas do vetor;
+        pessoas = criaPessoas(pessoas, numPessoas);
+
         //vai ler pessoas no vetor
-        pessoas = lePessoas(pessoas, &numPessoas);
+        pessoas = lePessoas(pessoas, numPessoas);
 
         //vai printar
         printaPessoas(pessoas, numPessoas);
@@ -144,8 +166,8 @@ int main(){
     }
 
     if(opcao == 2){
-        //vai ler as pesssoas do arquivo
-        leArquivo(pessoas, &numPessoas);
+        //lê o arquivo
+        pessoas = leArquivo(pessoas, &numPessoas);
 
         //vai printar
         printaPessoas(pessoas, numPessoas);
@@ -155,6 +177,5 @@ int main(){
         liberaPessoas(pessoas, numPessoas);
     }
 
-    
     return 0;
 }

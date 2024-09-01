@@ -15,4 +15,4 @@ remove:
 	clear
 
 valgrind:
-	valgrind ./main <entrada.txt
+	valgrind ./main <entrada2.txt
